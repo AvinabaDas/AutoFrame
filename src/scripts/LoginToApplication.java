@@ -17,7 +17,7 @@ import objectRepository.Dasboard;;
 public class LoginToApplication extends Driver{
 	
 	
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	public static void login(String[] data,String[] assertion) 
 	
 	{
@@ -26,7 +26,7 @@ public class LoginToApplication extends Driver{
 		try{
 			
 			testSuiteName="LoginToApplication";
-			testCaseName="login";
+			testCaseName="Login";
 			
 			String tite=driver.getTitle();
 			System.out.println("tite"+tite);

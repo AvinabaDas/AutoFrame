@@ -220,12 +220,12 @@ public class Driver {
 						testCaseName=row.getCell(2).getStringCellValue().toString().trim();
 						
 						testData=row.getCell(4).getStringCellValue().toString().trim();
-						String DataArray[]=testData.split(",");
+						String DataArray[]=testData.split("~~");
 						
 						assertions=row.getCell(5).getStringCellValue().toString().trim();
-						String AssertionsArray[]=assertions.split(",");
+						String AssertionsArray[]=assertions.split("~~");
 						
-						numberOfParams = testData .replaceAll("[^,]","").length();  
+						numberOfParams = testData .replaceAll("~~[^,]","").length();  
 						
 						System.out.println("testSuiteName: "+testSuiteName);
 						System.out.println("testCaseName: "+testCaseName);

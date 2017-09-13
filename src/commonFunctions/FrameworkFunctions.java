@@ -63,9 +63,12 @@ public class FrameworkFunctions extends Driver{
 			XSSFCell headerRowcellTwo = headerRow.createCell(1);
 			headerRowcellTwo.setCellValue("TestCaseName");
 
+			//XSSFCell headerRowcellThree = headerRow.createCell(2);
+			//headerRowcellThree.setCellValue("Action");
+
 			XSSFCell headerRowcellThree = headerRow.createCell(2);
 			headerRowcellThree.setCellValue("Result(Pass/Fail)");
-
+			
 			// Result Writing to Excel file
 
 			XSSFRow rowForData = sheet.createRow(sheet.getLastRowNum() + 1);
@@ -77,6 +80,9 @@ public class FrameworkFunctions extends Driver{
 
 			XSSFCell rowCellThree = rowForData.createCell(2);
 			rowCellThree.setCellValue(result);
+			
+			//XSSFCell rowCellFour = rowForData.createCell(3);
+			//rowCellThree.setCellValue(result);
 
 			File newFile = new File(fileName);
 			if (!newFile.exists()) {
@@ -103,6 +109,9 @@ public class FrameworkFunctions extends Driver{
 
 				XSSFCell cellNew3 = NewRow.createCell(2);
 				cellNew3.setCellValue(result);
+
+				//XSSFCell cellNew4 = NewRow.createCell(3);
+				//cellNew4.setCellValue(result);
 
 				FileOutputStream fileOut = new FileOutputStream(fileName);
 				NewWb.write(fileOut);
