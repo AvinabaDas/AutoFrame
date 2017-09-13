@@ -6,8 +6,6 @@ package objectRepository;
  * 
  * 
  */
-
-
 public class RegisterUser {
 
 	/*----------------------------------------------------------------------------------------------------------*/
@@ -24,8 +22,6 @@ public class RegisterUser {
 	public static String oulist="oulist";
 	public static String loginId="loginId";
 	public static String checkAvailibilitybtn="loaderIcon";
-	public static String loadedErrorResult="loadedErrorResult";
-	public static String loadedSuccessResult="loadedSuccessResult";
 	
 	//Data entry 
 	public static String empId="empId";
@@ -38,10 +34,38 @@ public class RegisterUser {
 	public static String desglst="desglst";
 	public static String admnlst="admnlst";
 	
+	//Error Messages
+	public static String loadedErrorResult="loadedErrorResult";
+	
+	//Success Messages
+	public static String loadedSuccessResult="loadedSuccessResult";	
 		
 	/*----------------------------------------------------------------------------------------------------------*/
 	/*----------------------------------------------XPATH-------------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------*/
+	
+	public static String createUser=".//*[@id='addUpdateUserDetail']/div[1]/div/h2";
+	
+	public static String empIdsucc=".//*[@id='tremp']/div";
+	public static String empIderr=".//*[@id='emapiderr']";
+	
+	public static String userNameerr=".//*[@id='userNameerr']";
+	public static String lastNameerr=".//*[@id='lastNameerr']";
+	
+	public static String emailiderr=".//*[@id='emailiderr']";
+	public static String emailidavail=".//*[@id='emailidavail']";
+	
+	public static String depterr=".//*[@id='mobavail']";
+	public static String designerr=".//*[@id='desinerr']";
+	
+	public static String ouerr=".//*[@id='ouerr']";
+	
+	public static String popupConfirm=".//*[@id='popup_overlay']";
+	public static String popupOk=".//*[@id='popup_ok']";
+	public static String popupCancel=".//*[@id='popup_cancel']";
+	
+	public static String msgSuccess=".//*[@id='msg']";
+	
 	public static String submitBtn=".//*[@id='btncreate']/button";
 	public static String clearBtn=".//*[@id='btnClr']";
 	
