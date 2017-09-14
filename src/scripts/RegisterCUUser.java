@@ -14,7 +14,7 @@ import driver.Driver;
 import objectRepository.Dasboard;
 import objectRepository.RegisterUser;
 
-public class Register extends Driver{
+public class RegisterCUUser extends Driver{
 	
 	
 	

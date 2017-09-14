@@ -55,7 +55,9 @@ public class RegisterUser {
 	public static String emailiderr=".//*[@id='emailiderr']";
 	public static String emailidavail=".//*[@id='emailidavail']";
 	
-	public static String depterr=".//*[@id='mobavail']";
+	public static String moberr=".//*[@id='moberr']";
+	
+	public static String depterr=".//*[@id='depterr']";
 	public static String designerr=".//*[@id='desinerr']";
 	
 	public static String ouerr=".//*[@id='ouerr']";
