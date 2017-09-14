@@ -1,0 +1,12 @@
+2017-09-13 17:46:11,298 - driver.Driver - INFO - *******************************************************
+2017-09-13 17:46:11,300 - driver.Driver - INFO - ------------WEL COME TO AUTOMATION FRAMEWORK-----------
+2017-09-13 17:46:11,300 - driver.Driver - INFO - *******************************************************
+2017-09-13 17:46:11,301 - driver.Driver - INFO - ------------------Its a MAIN Class---------------------
+2017-09-13 17:46:11,302 - driver.Driver - INFO - ---------Browser Initialization Started----------
+2017-09-13 17:46:11,978 - driver.Driver - INFO - ---------Selected Browser for AUT is : Chrome----------
+2017-09-13 17:46:23,629 - driver.Driver - INFO - ---------Executing Test Scenarios Started----------
+2017-09-13 17:46:23,767 - driver.Driver - INFO - ---------Executing Test Type : Regression----------
+2017-09-13 17:46:23,770 - driver.Driver - INFO - ---------Running Test Suite :InitiateApplicationUnderTest|| Running Test Case :openApplicationURL-------------
+2017-09-13 17:46:40,146 - driver.Driver - INFO - ---------Running Test Suite :LoginToApplication|| Running Test Case :login-------------
+2017-09-13 17:46:47,621 - driver.Driver - INFO - ---------Running Test Suite :Register|| Running Test Case :DuplicacyChk-------------
+2017-09-13 17:47:20,728 - driver.Driver - INFO - ---------Running Test Suite :Register|| Running Test Case :DuplicacyChk-------------
