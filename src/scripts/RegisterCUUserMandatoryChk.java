@@ -80,7 +80,7 @@ public class RegisterCUUserMandatoryChk extends Driver{
 				Thread.sleep(2000);
 			}
 			
-							
+						
 			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
 			FrameworkFunctions.screenShot(testCaseName);
 			
