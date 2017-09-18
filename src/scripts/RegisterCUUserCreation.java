@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import commonFunctions.FrameworkFunctions;
+import commonFunctions.ExcelReport;
 import driver.Driver;
 import objectRepository.Dasboard;
 import objectRepository.RegisterUser;
@@ -118,8 +118,8 @@ public class RegisterCUUserCreation extends Driver{
 			
 			
 	//		driver.findElement(By.xpath(Dasboard.home)).click();
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
+			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+			ExcelReport.screenShot(testCaseName);
 			
 		}catch(Exception e){
 			
