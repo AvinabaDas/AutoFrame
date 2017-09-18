@@ -29,6 +29,7 @@ public class LoginToApplication extends Driver{
 			
 			testSuiteName="LoginToApplication";
 			testCaseName="Login";
+			HTMLReport.startTest(testSuiteName,testCaseName);
 			
 			String tite=driver.getTitle();
 			System.out.println("tite"+tite);
@@ -37,12 +38,12 @@ public class LoginToApplication extends Driver{
 			
 			driver.findElement(By.id(LoginPage.username)).sendKeys(data[0]);
 			Thread.sleep(500);
-			String UserName = driver.findElement(By.id(LoginPage.username)).getText();
+			String UserName = driver.findElement(By.id(LoginPage.username)).getAttribute("value");
 			System.out.println (""+UserName);
 			HTMLReport.logTest("LoginPage", "UserName", "INFO", "KeyedInput", ""+UserName, "");
 			driver.findElement(By.id(LoginPage.password)).sendKeys(data[1]);
 			Thread.sleep(500);
-			String Password = driver.findElement(By.id(LoginPage.username)).getText();
+			String Password = driver.findElement(By.id(LoginPage.password)).getAttribute("value");
 			HTMLReport.logTest("LoginPage", "Password", "INFO", "KeyedInput", ""+Password, "");
 			driver.findElement(By.xpath(LoginPage.submitBtn)).click();
 			HTMLReport.logTest("LoginPage", "SubmitButton", "INFO", "ButtonClick", "Submit Button Clicked", "");

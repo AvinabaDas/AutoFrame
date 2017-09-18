@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import commonFunctions.FrameworkFunctions;
+import commonFunctions.ExcelReport;
+//import commonFunctions.ExcelReport;
+import commonFunctions.HTMLReport;
 import driver.Driver;
 import objectRepository.Dasboard;
 import objectRepository.RegisterUser;
@@ -19,6 +21,10 @@ public class RegisterCUUserCreation extends Driver{
 	
 	public static void userSetup() 
 	{
+		testSuiteName="RegisterCUUserCreation";
+		testCaseName="userSetup";
+		HTMLReport.startTest(testSuiteName,testCaseName);
+		
 		try
 		{
 			
@@ -26,15 +32,23 @@ public class RegisterCUUserCreation extends Driver{
 				System.out.println("tite"+titel);
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+				HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "User Manegment Clicked", "");
 				System.out.println("User Mgmt Clicked");
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(Dasboard.createUser)).click();
 				System.out.println("Crt Usr Clicked");
+				HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Create User Clicked", "");
 				Thread.sleep(2000);
 				driver.findElement(By.id(RegisterUser.userTypeCu)).click();
+				HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "BBCU Radio Button Clicked", "");
 				System.out.println("BBCU rd Button Clicked");
 				Thread.sleep(2000);
-			
+		
+				
+				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+				ExcelReport.screenShot(testCaseName);
+				HTMLReport.endTest();
+				
 			}
 		
 			catch(Exception e){
@@ -92,8 +106,9 @@ public class RegisterCUUserCreation extends Driver{
 						
 				
 			//driver.findElement(By.xpath(Dasboard.home)).click();
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
+			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+			ExcelReport.screenShot(testCaseName);
+			HTMLReport.endTest();
 			
 		}catch(Exception e){
 			
@@ -142,8 +157,8 @@ public class RegisterCUUserCreation extends Driver{
 				
 	
 			//	driver.findElement(By.xpath(Dasboard.home)).click();
-				FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-				FrameworkFunctions.screenShot(testCaseName);
+				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+				ExcelReport.screenShot(testCaseName);
 				
 			}catch(Exception e){
 				
@@ -208,8 +223,8 @@ public class RegisterCUUserCreation extends Driver{
 				
 	
 		//		driver.findElement(By.xpath(Dasboard.home)).click();
-				FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-				FrameworkFunctions.screenShot(testCaseName);
+				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+				ExcelReport.screenShot(testCaseName);
 				
 			}catch(Exception e){
 				
@@ -275,8 +290,8 @@ public class RegisterCUUserCreation extends Driver{
 			
 
 	//		driver.findElement(By.xpath(Dasboard.home)).click();
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
+			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+			ExcelReport.screenShot(testCaseName);
 			
 		}catch(Exception e){
 			

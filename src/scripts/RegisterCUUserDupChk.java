@@ -10,15 +10,21 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import commonFunctions.FrameworkFunctions;
+import commonFunctions.ExcelReport;
+import commonFunctions.HTMLReport;
 import driver.Driver;
 import objectRepository.Dasboard;
+import objectRepository.LoginPage;
 import objectRepository.RegisterUser;
 
 public class RegisterCUUserDupChk extends Driver{
 	
 	public static void userSetup() 
 	{
+		testSuiteName="RegisterCUUserDupChk";
+		testCaseName="userSetup";
+		HTMLReport.startTest(testSuiteName,testCaseName);
+		
 		try
 		{
 			
@@ -26,15 +32,23 @@ public class RegisterCUUserDupChk extends Driver{
 				System.out.println("tite"+titel);
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+				HTMLReport.logTest("RegisterUser Page", "RegisterUserSetup", "INFO", "RegisterUser", "User Manegment Clicked", "");
 				System.out.println("User Mgmt Clicked");
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(Dasboard.createUser)).click();
 				System.out.println("Crt Usr Clicked");
+				HTMLReport.logTest("RegisterUser Page", "RegisterUserSetup", "INFO", "RegisterUser", "Create User Clicked", "");
 				Thread.sleep(2000);
 				driver.findElement(By.id(RegisterUser.userTypeCu)).click();
+				HTMLReport.logTest("RegisterUser Page", "RegisterUserSetup", "INFO", "RegisterUser", "BBCU Radio Button Clicked", "");
 				System.out.println("BBCU rd Button Clicked");
 				Thread.sleep(2000);
-			
+		
+				
+				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+				ExcelReport.screenShot(testCaseName);
+				HTMLReport.endTest();
+				
 			}
 		
 			catch(Exception e){
@@ -51,24 +65,25 @@ public class RegisterCUUserDupChk extends Driver{
 	public static void DuplicacyChk(String[] data,String[] assertion) 
 	
 	{
+		testSuiteName="RegisterCUUserDupChk";
+		testCaseName="DuplicacyChk";
+		HTMLReport.startTest(testSuiteName,testCaseName);
 		
 		System.out.println("Register User Duplicacy Check");
 		String DuplicacyChk = "";
 					
 		try{
 			
-			testSuiteName="RegisterCUUserDupChk";
-			testCaseName="DuplicacyChk";
-			
-		
+				
 			driver.findElement(By.id(RegisterUser.loginId)).sendKeys(data[0]);
+			String UserName = driver.findElement(By.id(RegisterUser.loginId)).getAttribute("value");
+			HTMLReport.logTest("RegisterUserPage", "UserName", "INFO", "KeyedInput", ""+UserName, "");
 			System.out.println("Value Inputed");
-			
-					
-			
 			Thread.sleep(2000);
+			
 			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).click();
 			System.out.println("Clicked");
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Check Availability Button Clicked", "");
 			Thread.sleep(2000);
 			String ChkValue = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
 			System.out.println("Value is : "+ChkValue);
@@ -80,6 +95,7 @@ public class RegisterCUUserDupChk extends Driver{
 				DuplicacyChk = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
 				System.out.println(DuplicacyChk);
 				Result = DuplicacyChk;
+				HTMLReport.logTest("RegisterUserPage", ""+ExpectedValue, "FAIL", "Button Clicked", ""+Result, "");
 				Thread.sleep(2000);
 			}
 			else
@@ -87,13 +103,15 @@ public class RegisterCUUserDupChk extends Driver{
 				DuplicacyChk = driver.findElement(By.id(RegisterUser.loadedSuccessResult)).getText();
 				System.out.println(DuplicacyChk);
 				Result = DuplicacyChk;
+				HTMLReport.logTest("RegisterUserPage", ""+ExpectedValue, "PASS", "Button Clicked", ""+Result, "");
 				Thread.sleep(2000);
 			}
 						
 				
-			//driver.findElement(By.xpath(Dasboard.home)).click();
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
+			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+			ExcelReport.screenShot(testCaseName);
+			HTMLReport.endTest();
+			
 			
 		}catch(Exception e){
 			
@@ -142,8 +160,8 @@ public class RegisterCUUserDupChk extends Driver{
 				
 	
 			//	driver.findElement(By.xpath(Dasboard.home)).click();
-				FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-				FrameworkFunctions.screenShot(testCaseName);
+				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+				ExcelReport.screenShot(testCaseName);
 				
 			}catch(Exception e){
 				
@@ -208,8 +226,8 @@ public class RegisterCUUserDupChk extends Driver{
 				
 	
 		//		driver.findElement(By.xpath(Dasboard.home)).click();
-				FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-				FrameworkFunctions.screenShot(testCaseName);
+				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+				ExcelReport.screenShot(testCaseName);
 				
 			}catch(Exception e){
 				
@@ -275,8 +293,8 @@ public class RegisterCUUserDupChk extends Driver{
 			
 
 	//		driver.findElement(By.xpath(Dasboard.home)).click();
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
+			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+			ExcelReport.screenShot(testCaseName);
 			
 		}catch(Exception e){
 			
