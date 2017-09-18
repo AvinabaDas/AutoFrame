@@ -22,7 +22,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import driver.Driver;
 
 
-public class FrameworkFunctions extends Driver{
+public class ExcelReport extends Driver{
 	
 	// Get current Date and append to file name
 	public static Calendar calDate = Calendar.getInstance();
@@ -129,8 +129,6 @@ public class FrameworkFunctions extends Driver{
 	}
 
 
-	
-	
 	public static void screenShot(String fileName) throws IOException, HeadlessException, AWTException
 	{
 		
