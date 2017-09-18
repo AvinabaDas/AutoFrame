@@ -17,6 +17,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import commonFunctions.HTMLReport;
+
+
 /**
  * Automation Framework Driver class
  * @author Avinaba Das
@@ -84,12 +87,18 @@ public class Driver {
 			e.printStackTrace();
 		}
 		
+		//Report 
+		
+				HTMLReport.initializeReport();
 		
 		//Initialize browser for application under test
 		browserInitialization();
 		
 		//Read execution scenarios from excel file and trigger automation test cases to run
 		executeScenarios();
+		
+		
+		
 		
 	}
 	
@@ -187,6 +196,8 @@ public class Driver {
 			FileInputStream input = new FileInputStream(excelPath);
 			XSSFWorkbook workbook=new XSSFWorkbook(input);
 			
+			//logResult.startTest(strTestCaseName);
+			
 			//GetTestEnvironmentToRun
 			XSSFSheet EnvironmentSheet = workbook.getSheet("TestType");
 			int numberOfRowsinEnvironmentSheet=EnvironmentSheet.getLastRowNum();
@@ -235,6 +246,7 @@ public class Driver {
 						
 						logger.info("---------Running Test Suite :"+testSuiteName+"||"+" Running Test Case :" +testCaseName+ "-------------");
 						
+						
 						//call to testCase using java reflection
 						//System.out.println("Class Name : Avinaba");
 						Class<?> clazz = Class.forName("scripts."+testSuiteName);
@@ -252,7 +264,7 @@ public class Driver {
 							System.out.println("Method Name : "+m);
 							Object t = clazz.newInstance();
 							Object o= m.invoke(t);
-							
+							//Report
 						} else
 						
 						{
@@ -278,7 +290,6 @@ public class Driver {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
 		
 		
 	}

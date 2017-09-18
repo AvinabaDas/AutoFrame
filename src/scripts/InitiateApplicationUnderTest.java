@@ -3,9 +3,13 @@ package scripts;
 import java.awt.AWTException;
 import java.awt.HeadlessException;
 import java.io.IOException;
-import commonFunctions.FrameworkFunctions;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import commonFunctions.ExcelReport;
 import driver.Driver;
 import objectRepository.*;
+import commonFunctions.*;
 
 public class InitiateApplicationUnderTest extends Driver {
 	
@@ -16,9 +20,12 @@ public class InitiateApplicationUnderTest extends Driver {
 			
 			testSuiteName="InitiateApplicationUnderTest";
 			testCaseName="openApplicationURL";
+			HTMLReport.startTest(testSuiteName,testCaseName);
 			
 			driver.manage().window().maximize();
 			driver.get(QA_ENVIRONMENT);
+			HTMLReport.logTest("Browser", "Open Browser", "INFO", "CHROME", "The CHROME Browser Launched", "");
+			HTMLReport.logTest("Browser", "Open Browser", "PASS", "CHROME", "The CHROME browser was opened.", "");
 			
 			
 			Thread.sleep(500);
@@ -39,15 +46,16 @@ public class InitiateApplicationUnderTest extends Driver {
 				
 			}
 			
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
+			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+			HTMLReport.endTest();
+			ExcelReport.screenShot(testCaseName);
 			
 			
 		}catch(Exception e){
 			
 			System.out.println(e);
 			try {
-				FrameworkFunctions.screenShot("Error"+testCaseName);
+				ExcelReport.screenShot("Error"+testCaseName);
 			} catch (HeadlessException | IOException | AWTException e1) {
 				e1.printStackTrace();
 			}
