@@ -95,7 +95,7 @@ public class RegisterCUUserDupChk extends Driver{
 				DuplicacyChk = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
 				System.out.println(DuplicacyChk);
 				Result = DuplicacyChk;
-				HTMLReport.logTest("RegisterUserPage", ""+ExpectedValue, "FAIL", "Button Clicked", ""+Result, "");
+				HTMLReport.logTest("RegisterUserPage", ""+ExpectedValue, "PASS", "Button Clicked", ""+Result, "");
 				Thread.sleep(2000);
 			}
 			else
@@ -103,7 +103,7 @@ public class RegisterCUUserDupChk extends Driver{
 				DuplicacyChk = driver.findElement(By.id(RegisterUser.loadedSuccessResult)).getText();
 				System.out.println(DuplicacyChk);
 				Result = DuplicacyChk;
-				HTMLReport.logTest("RegisterUserPage", ""+ExpectedValue, "PASS", "Button Clicked", ""+Result, "");
+				HTMLReport.logTest("RegisterUserPage", ""+ExpectedValue, "FAIL", "Button Clicked", ""+Result, "");
 				Thread.sleep(2000);
 			}
 						
