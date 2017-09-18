@@ -47,233 +47,76 @@ public class RegisterCUUserCreation extends Driver{
 	//**User ID Data Entry  **//
 	
 	
-	
 	public static void BBCUAdminUserSubmission(String[] data,String[] assertion) 
 	
 	{
 		
 		System.out.println("BBCU Admin User Creation");
-		String DuplicacyChk = "";
-					
+						
 		try{
 			
-			testSuiteName="RegisterCUUserDupChk";
-			testCaseName="DuplicacyChk";
+			testSuiteName="BBCUAdminUserSubmission";
+			testCaseName="BBCUAdmin_Creation";
 			
 		
 			driver.findElement(By.id(RegisterUser.loginId)).sendKeys(data[0]);
 			System.out.println("Value Inputed");
-			
-					
-			
 			Thread.sleep(2000);
+			
 			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).click();
+			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).sendKeys(Keys.TAB);
 			System.out.println("Clicked");
 			Thread.sleep(2000);
-			String ChkValue = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
-			System.out.println("Value is : "+ChkValue);
-			String ExpectedValue = "Duplicate login id, please provide another id";
-			
-			if (ChkValue.equals(ExpectedValue))
-			{
-				//driver.findElement(By.xpath(Dasboard.userMgmt)).click();
-				DuplicacyChk = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
-				System.out.println(DuplicacyChk);
-				Result = DuplicacyChk;
-				Thread.sleep(2000);
-			}
-			else
-			{
-				DuplicacyChk = driver.findElement(By.id(RegisterUser.loadedSuccessResult)).getText();
-				System.out.println(DuplicacyChk);
-				Result = DuplicacyChk;
-				Thread.sleep(2000);
-			}
-						
-				
-			//driver.findElement(By.xpath(Dasboard.home)).click();
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
-			
-		}catch(Exception e){
-			
-			System.out.println(e);
-			
-		}
-			
-	}	
-	//**Emp ID Duplicacy Check **//
-		
-		public static void DuplicacyChkEmp(String[] data,String[] assertion) 
-		
-		{
-			System.out.println("Register User Emp ID Duplicacy Check");
-			//String DuplicacyChk = "";
-			
-			try{
-				
-				testSuiteName="RegisterCUUserDupChk";
-				testCaseName="DuplicacyChkEmp";
-				
-				driver.findElement(By.id(RegisterUser.empId)).sendKeys(data[0]);
-				driver.findElement(By.id(RegisterUser.empId)).sendKeys(Keys.TAB);
-				System.out.println("Value Inputed");						
-				Thread.sleep(2000);
-													
-				String ChkValueEmp = driver.findElement(By.xpath(RegisterUser.empIderr)).getText();
-				System.out.println("Value is : "+ChkValueEmp);
-				String ExpectedValueEmp = "Another user with the same employee id exists in the system.";
-				String ChkValueEmpDup = "";
-				if (ChkValueEmp.equals(ExpectedValueEmp))
-				{
-					//driver.findElement(By.xpath(Dasboard.userMgmt)).click();
-					ChkValueEmpDup = driver.findElement(By.xpath(RegisterUser.empIderr)).getText();
-					System.out.println("Empl ID negative:" + ChkValueEmpDup);
-					Result = ChkValueEmpDup;
-					Thread.sleep(2000);
-				}
-				else
-				{
-					ChkValueEmpDup = driver.findElement(By.xpath(RegisterUser.empIdsucc)).getText();
-					System.out.println("Empl ID positive:" + ChkValueEmpDup);
-					Result = ChkValueEmpDup;
-					Thread.sleep(2000);
-				}
-				
-	
-			//	driver.findElement(By.xpath(Dasboard.home)).click();
-				FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-				FrameworkFunctions.screenShot(testCaseName);
-				
-			}catch(Exception e){
-				
-				System.out.println(e);
-				
-			}
-		
-	
-					
-			//Assert and write Report to File
-			
-			/** if(titel.equalsIgnoreCase("Dashboard"))
-			{
-				Result="Pass";
-				
-			}else{
-				
-				Result="Fail";
-				
-			}**/
 			
 			
-		
-		}
-		
-		
-	public static void DuplicacyChkEmail(String[] data,String[] assertion) 
-		
-		{
-			System.out.println("Register User Email ID Duplicacy Check");
-			//String DuplicacyChk = "";
+			driver.findElement(By.id(RegisterUser.userName)).sendKeys(data[0]);
+		    driver.findElement(By.id(RegisterUser.userName)).sendKeys(Keys.TAB);
+		    System.out.println("Value Inputed for First Name");						
+			Thread.sleep(2000);
 			
-			try{
-				
-				testSuiteName="RegisterCUUserDupChk";
-				testCaseName="DuplicacyChkEmail";
-				
-				driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[0]);
-				driver.findElement(By.id(RegisterUser.emailId)).sendKeys(Keys.TAB);
-				System.out.println("Value Inputed");						
-				Thread.sleep(2000);
-													
-				String ChkValueEmail = driver.findElement(By.xpath(RegisterUser.empIderr)).getText();
-				System.out.println("Value is : "+ChkValueEmail);
-				String ExpectedValueEmp = "Another user with the same email id exists in the system.";
-				String ChkValueEmailDup = "";
-				if (ChkValueEmail.equals(ChkValueEmailDup))
-				{
-					driver.findElement(By.xpath(Dasboard.userMgmt)).click();
-					ChkValueEmailDup = driver.findElement(By.xpath(RegisterUser.emailiderr)).getText();
-					System.out.println("Empl ID negative:" + ExpectedValueEmp);
-					Result = ChkValueEmailDup;
-					Thread.sleep(2000);
-				}
-				else
-				{
-					ChkValueEmailDup = driver.findElement(By.xpath(RegisterUser.emailidavail)).getText();
-					System.out.println("Empl ID positive:" + ExpectedValueEmp);
-					Result = ChkValueEmailDup;
-					Thread.sleep(2000);
-				}
-				
-	
-		//		driver.findElement(By.xpath(Dasboard.home)).click();
-				FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-				FrameworkFunctions.screenShot(testCaseName);
-				
-			}catch(Exception e){
-				
-				System.out.println(e);
-				
-			}
-		
-	
-					
-			//Assert and write Report to File
+			driver.findElement(By.id(RegisterUser.lastName)).sendKeys(data[0]);
+		    driver.findElement(By.id(RegisterUser.lastName)).sendKeys(Keys.TAB);
+		    System.out.println("Value Inputed for last Name");						
+			Thread.sleep(2000);
 			
-			/** if(titel.equalsIgnoreCase("Dashboard"))
-			{
-				Result="Pass";
-				
-			}else{
-				
-				Result="Fail";
-				
-			}**/
+			driver.findElement(By.id(RegisterUser.empId)).sendKeys(data[0]);
+		    driver.findElement(By.id(RegisterUser.empId)).sendKeys(Keys.TAB);
+		    System.out.println("Value Inputed for Emp ID");						
+			Thread.sleep(2000);
 			
 			
-		}
-		
-	
-	//*
-	
-	public static void DuplicacyChkmob(String[] data,String[] assertion) 
-	
-	{
-		System.out.println("Register User Email ID Duplicacy Check");
-		//String DuplicacyChk = "";
-	
-		try{
-			
-			testSuiteName="RegisterCUUserDupChk";
-			testCaseName="DuplicacyChkmob";
+			driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[0]);
+			driver.findElement(By.id(RegisterUser.emailId)).sendKeys(Keys.TAB);
+			System.out.println("Value Inputed for Email");						
+			Thread.sleep(2000);
 			
 			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(data[0]);
 			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(Keys.TAB);
-			System.out.println("Value Inputed");						
+			System.out.println("Value Inputed for mobileNo");						
 			Thread.sleep(2000);
-												
-			String ChkValueMob = driver.findElement(By.xpath(RegisterUser.moberr)).getText();
-			System.out.println("Value is : "+ChkValueMob);
-			String ExpectedValueMob = "Another user with the same email id exists in the system.";
-			String ChkValueMobDup = "";
-			if (ChkValueMob.equals(ExpectedValueMob))
-			{
-				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
-				ChkValueMobDup = driver.findElement(By.xpath(RegisterUser.moberr)).getText();
-				System.out.println("Empl ID negative:" + ExpectedValueMob);
-				Result = ChkValueMobDup;
-				Thread.sleep(2000);
-			}
-			else
-			{
-				ChkValueMobDup = driver.findElement(By.xpath(RegisterUser.mobsucc)).getText();
-				System.out.println("Empl ID positive:" + ExpectedValueMob);
-				Result = ChkValueMobDup;
-				Thread.sleep(2000);
-			}
+	
+			driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(data[0]);
+			driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(Keys.TAB);
+			System.out.println("Value Inputed for departmnt");						
+			Thread.sleep(2000);
 			
-
+			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(data[0]);
+			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(Keys.TAB);
+			System.out.println("Value Inputed for designation");						
+			Thread.sleep(2000);
+			
+			
+			driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(data[0]);
+			driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(Keys.TAB);
+			System.out.println("Value selected for Admin_User");						
+			Thread.sleep(2000);
+			
+		
+			driver.findElement(By.xpath(RegisterUser.submitBtn)).click();
+			System.out.println("Clicked");
+			Thread.sleep(2000);
+			
+			
 	//		driver.findElement(By.xpath(Dasboard.home)).click();
 			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
 			FrameworkFunctions.screenShot(testCaseName);
