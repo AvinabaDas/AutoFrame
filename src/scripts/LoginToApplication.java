@@ -9,11 +9,13 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import commonFunctions.FrameworkFunctions;
+import commonFunctions.ExcelReport;
+import commonFunctions.HTMLReport;
 import driver.Driver;
 import objectRepository.LoginPage;
 import objectRepository.Dasboard;;
 
+@SuppressWarnings("unused")
 public class LoginToApplication extends Driver{
 	
 	
@@ -31,10 +33,19 @@ public class LoginToApplication extends Driver{
 			String tite=driver.getTitle();
 			System.out.println("tite"+tite);
 			
-			driver.findElement(By.id(LoginPage.username)).sendKeys(data[0]);
-			driver.findElement(By.id(LoginPage.password)).sendKeys(data[1]);
-			driver.findElement(By.xpath(LoginPage.submitBtn)).click();
+			HTMLReport.logTest("LoginPage", "Admin Login Page", "INFO", "Title", ""+tite, "");
 			
+			driver.findElement(By.id(LoginPage.username)).sendKeys(data[0]);
+			Thread.sleep(500);
+			String UserName = driver.findElement(By.id(LoginPage.username)).getText();
+			System.out.println (""+UserName);
+			HTMLReport.logTest("LoginPage", "UserName", "INFO", "KeyedInput", ""+UserName, "");
+			driver.findElement(By.id(LoginPage.password)).sendKeys(data[1]);
+			Thread.sleep(500);
+			String Password = driver.findElement(By.id(LoginPage.username)).getText();
+			HTMLReport.logTest("LoginPage", "Password", "INFO", "KeyedInput", ""+Password, "");
+			driver.findElement(By.xpath(LoginPage.submitBtn)).click();
+			HTMLReport.logTest("LoginPage", "SubmitButton", "INFO", "ButtonClick", "Submit Button Clicked", "");
 			Thread.sleep(500);
 			//WebDriver webDriver = null;
 			//WebDriverWait wait = new WebDriverWait(webDriver, 60);
@@ -50,22 +61,25 @@ public class LoginToApplication extends Driver{
 			if(titel.equalsIgnoreCase("Dashboard"))
 			{
 				Result="Pass";
+				HTMLReport.logTest("Login", "Login to Application", "PASS", "Login", "Login Successfull.", "");
 				
 			}else{
 				
 				Result="Fail";
+				HTMLReport.logTest("Login", "Login to Application", "Fail", "Login", "Login Failed.", "");
 				
 			}
 			
-			FrameworkFunctions.reportGeneration(testSuiteName, testCaseName, Result);
-			FrameworkFunctions.screenShot(testCaseName);
+			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+			ExcelReport.screenShot(testCaseName);
+			HTMLReport.endTest();
 			
 			
 		}catch(Exception e){
 			
 			System.out.println(e);
 			try {
-				FrameworkFunctions.screenShot("Error"+testCaseName);
+				ExcelReport.screenShot("Error"+testCaseName);
 			} catch (HeadlessException | IOException | AWTException e1) {
 				e1.printStackTrace();
 			}
