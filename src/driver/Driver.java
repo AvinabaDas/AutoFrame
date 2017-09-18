@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -229,8 +231,12 @@ public class Driver {
 					{
 						testSuiteName=row.getCell(1).getStringCellValue().toString().trim();
 						testCaseName=row.getCell(2).getStringCellValue().toString().trim();
-						
-						testData=row.getCell(4).getStringCellValue().toString().trim();
+						try {
+							testData=row.getCell(4).getStringCellValue().toString().trim();
+						}catch(Exception e){
+							//testData=String.valueOf(BigInteger.valueOf(row.getCell(4).getNumercCellValue()));
+							testData=String.valueOf(new BigDecimal(row.getCell(4).getNumericCellValue()));
+						}
 						String DataArray[]=testData.split("~~");
 						
 						assertions=row.getCell(5).getStringCellValue().toString().trim();
@@ -288,7 +294,7 @@ public class Driver {
 			workbook.close();
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		
