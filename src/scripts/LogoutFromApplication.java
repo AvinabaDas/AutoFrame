@@ -44,34 +44,27 @@ public class LogoutFromApplication extends Driver{
 					
 			//Assert and write Report to File
 			
-			if(titel.equalsIgnoreCase("Dashboard"))
-			{
-				Result="Pass";
-				
-			}else{
-				
-				Result="Fail";
-				
-			}
-			
 			 WebElement element = driver.findElement(By.xpath(".//*[@id='rmenu']/div/div[1]/div/a/span"));
 			 boolean status = element.isEnabled();
 			 if (status = true)
 			 {
 				 HTMLReport.logTest("Dashboard Page", "LogoutLink", "INFO", "LinkClick", "Logout Link Found", "");
+				 Actions action = new Actions(driver);
+				 
+			        action.moveToElement(element).build().perform();
+			 
+			        driver.findElement(By.linkText("Log out")).click();
+			        HTMLReport.logTest("Dashboard Page", "LogoutLink", "INFO", "LinkClick", "Logout Link Clicked", "");
+			        Result="Pass";
 			 }
 			 else
 			 {
 				 HTMLReport.logTest("Dashboard Page", "LogoutLink", "INFO", "LinkClick", "Logout Link Not Found", "");
+				 Result="Fail";
 			 }
 			 
 			 
-		        Actions action = new Actions(driver);
-		 
-		        action.moveToElement(element).build().perform();
-		 
-		        driver.findElement(By.linkText("Log out")).click();
-		        HTMLReport.logTest("Dashboard Page", "LogoutLink", "INFO", "LinkClick", "Logout Link Clicked", "");
+		       
 		        
 		        Thread.sleep(500);
 			
