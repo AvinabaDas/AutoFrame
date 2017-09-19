@@ -1,6 +1,5 @@
 package scripts;
 
-// Archita
 
 import java.awt.AWTException;
 import java.awt.HeadlessException;
@@ -70,13 +69,21 @@ public class RegisterCUUserMandatoryChk extends Driver{
 			
 			
 			String usernameVal = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "User Name :"+usernameVal, "");
 			String EmpIdVal = driver.findElement(By.xpath(RegisterUser.empIderr)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Emp ID :"+EmpIdVal, "");
 			String FnameVal = driver.findElement(By.xpath(RegisterUser.userNameerr)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "First Name :"+FnameVal, "");
 			String LNameVal = driver.findElement(By.xpath(RegisterUser.lastNameerr)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Last Name :"+LNameVal, "");
 			String EmailVal = driver.findElement(By.xpath(RegisterUser.emailiderr)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Email ID :"+EmailVal, "");
 			String MobileVal = driver.findElement(By.xpath(RegisterUser.moberr)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Mobile Number :"+MobileVal, "");
 			String DeptVal = driver.findElement(By.xpath(RegisterUser.depterr)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Depertment :"+DeptVal, "");
 			String DesigVal = driver.findElement(By.xpath(RegisterUser.designerr)).getText();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Designation :"+DesigVal, "");
 			
 			String TotalVal = usernameVal + EmpIdVal + FnameVal + LNameVal + EmailVal + MobileVal + DeptVal + DesigVal ;
 			String Total = username + EmpId + Fname + LName + Email + Mobile + Dept + Desig ;
@@ -85,21 +92,25 @@ public class RegisterCUUserMandatoryChk extends Driver{
 			if (Total.equals(TotalVal))
 				{
 				Result = "Pass";
+				HTMLReport.logTest("RegisterUser Page", "RegisterUser", "PASS", "RegisterUser", "", "");
 				Thread.sleep(2000);
 			}
 			else
 			{
 				Result = "Fail";
+				HTMLReport.logTest("RegisterUser Page", "RegisterUser", "FAIL", "RegisterUser", "", "");
 				Thread.sleep(2000);
 			}
 			
 						
 			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
 			ExcelReport.screenShot(testCaseName);
+			HTMLReport.endTest();
 			
 		}catch(Exception e){
 			
 			System.out.println(e);
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "FAIL", "RegisterUser", ""+e, "");
 			
 		}
 			
