@@ -44,7 +44,7 @@ public class RegisterCUUserCreation extends Driver{
 	}
 	
 	
-	//**User ID Data Entry  **//
+	//**CU Admin Data Entry and submission **//
 	
 	
 	public static void BBCUAdminUserSubmission(String[] data,String[] assertion) 
@@ -55,10 +55,11 @@ public class RegisterCUUserCreation extends Driver{
 						
 		try{
 			
-			testSuiteName="BBCUAdminUserSubmission";
-			testCaseName="BBCUAdmin_Creation";
+			testSuiteName="RegisterCUUserCreation";
+			testCaseName="BBCUAdminUserSubmission";
 			
-		
+			userSetup();
+			
 			driver.findElement(By.id(RegisterUser.loginId)).sendKeys(data[0]);
 			System.out.println("Value Inputed");
 			Thread.sleep(2000);
@@ -68,58 +69,69 @@ public class RegisterCUUserCreation extends Driver{
 			System.out.println("Clicked");
 			Thread.sleep(2000);
 			
-			
-			driver.findElement(By.id(RegisterUser.userName)).sendKeys(data[0]);
-		    driver.findElement(By.id(RegisterUser.userName)).sendKeys(Keys.TAB);
-		    System.out.println("Value Inputed for First Name");						
-			Thread.sleep(2000);
-			
-			driver.findElement(By.id(RegisterUser.lastName)).sendKeys(data[0]);
-		    driver.findElement(By.id(RegisterUser.lastName)).sendKeys(Keys.TAB);
-		    System.out.println("Value Inputed for last Name");						
-			Thread.sleep(2000);
-			
-			driver.findElement(By.id(RegisterUser.empId)).sendKeys(data[0]);
+			driver.findElement(By.id(RegisterUser.empId)).sendKeys(data[1]);
 		    driver.findElement(By.id(RegisterUser.empId)).sendKeys(Keys.TAB);
 		    System.out.println("Value Inputed for Emp ID");						
 			Thread.sleep(2000);
 			
-			
-			driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[0]);
-			driver.findElement(By.id(RegisterUser.emailId)).sendKeys(Keys.TAB);
-			System.out.println("Value Inputed for Email");						
+			driver.findElement(By.id(RegisterUser.userName)).sendKeys(data[2]);
+		    driver.findElement(By.id(RegisterUser.userName)).sendKeys(Keys.TAB);
+		    System.out.println("Value Inputed for First Name");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(data[0]);
-			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(Keys.TAB);
+			driver.findElement(By.id(RegisterUser.lastName)).sendKeys(data[3]);
+		    driver.findElement(By.id(RegisterUser.lastName)).sendKeys(Keys.TAB);
+		    System.out.println("Value Inputed for last Name");						
+			Thread.sleep(2000);
+					
+			driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[4]);
+		    System.out.println("Value Inputed for Email");						
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(data[5]);
 			System.out.println("Value Inputed for mobileNo");						
 			Thread.sleep(2000);
 	
-			driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(data[0]);
-			driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(Keys.TAB);
+			driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(data[6]);
 			System.out.println("Value Inputed for departmnt");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(data[0]);
-			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(Keys.TAB);
+			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(data[7]);
 			System.out.println("Value Inputed for designation");						
 			Thread.sleep(2000);
 			
 			
-			driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(data[0]);
-			driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(Keys.TAB);
+			driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(data[8]);
+		//	driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(Keys.TAB);
 			System.out.println("Value selected for Admin_User");						
 			Thread.sleep(2000);
 			
 		
 			driver.findElement(By.xpath(RegisterUser.submitBtn)).click();
-			System.out.println("Clicked");
+			System.out.println("Clicked Submit Button");
 			Thread.sleep(2000);
 			
+			driver.findElement(By.xpath(RegisterUser.popupOk)).click();
+			System.out.println("Clicked Ok Button");
+			Thread.sleep(2000);
 			
-	//		driver.findElement(By.xpath(Dasboard.home)).click();
+			String submitsuccess = "New user BBCU_hirasen has been created successfully and waiting for approval.";
+			String submitsuccessVal = driver.findElement(By.xpath(RegisterUser.msgSuccess)).getText();
+			
+			if (submitsuccessVal.equals(submitsuccess))
+			{
+			Result = "Pass";
+			Thread.sleep(2000);
+			}
+			else
+			{
+			Result = "Fail";
+			Thread.sleep(2000);
+			}
+			driver.findElement(By.xpath(Dasboard.home)).click();
 			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
 			ExcelReport.screenShot(testCaseName);
+			
 			
 		}catch(Exception e){
 			
@@ -127,24 +139,107 @@ public class RegisterCUUserCreation extends Driver{
 			
 		}
 	
-
-				
+	}
+		//**CU Admin Data Entry and submission **//
 		
 		
-		/** if(titel.equalsIgnoreCase("Dashboard"))
+		public static void BBCUUserSubmission(String[] data,String[] assertion) 
+		
 		{
-			Result="Pass";
 			
-		}else{
-			
-			Result="Fail";
-			
-		}**/
-		
+			System.out.println("BBCU Admin User Creation");
+							
+			try{
 				
+				testSuiteName="RegisterCUUserCreation";
+				testCaseName="BBCUUserSubmission";
+				
+				userSetup();
+				
+				driver.findElement(By.id(RegisterUser.loginId)).sendKeys(data[0]);
+				System.out.println("Value Inputed");
+				Thread.sleep(2000);
+				
+				driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).click();
+				driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).sendKeys(Keys.TAB);
+				System.out.println("Clicked");
+				Thread.sleep(2000);
+				
+				driver.findElement(By.id(RegisterUser.empId)).sendKeys(data[1]);
+			    driver.findElement(By.id(RegisterUser.empId)).sendKeys(Keys.TAB);
+			    System.out.println("Value Inputed for Emp ID");						
+				Thread.sleep(2000);
+				
+				driver.findElement(By.id(RegisterUser.userName)).sendKeys(data[2]);
+			    driver.findElement(By.id(RegisterUser.userName)).sendKeys(Keys.TAB);
+			    System.out.println("Value Inputed for First Name");						
+				Thread.sleep(2000);
+				
+				driver.findElement(By.id(RegisterUser.lastName)).sendKeys(data[3]);
+			    driver.findElement(By.id(RegisterUser.lastName)).sendKeys(Keys.TAB);
+			    System.out.println("Value Inputed for last Name");						
+				Thread.sleep(2000);
+						
+				driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[4]);
+			//	driver.findElement(By.id(RegisterUser.emailId)).sendKeys(Keys.TAB);
+				System.out.println("Value Inputed for Email");						
+				Thread.sleep(2000);
+				
+				driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(data[5]);
+		//		driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(Keys.TAB);
+				System.out.println("Value Inputed for mobileNo");						
+				Thread.sleep(2000);
 		
+				driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(data[6]);
+			//	driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(Keys.TAB);
+				System.out.println("Value Inputed for departmnt");						
+				Thread.sleep(2000);
+				
+				driver.findElement(By.id(RegisterUser.desglst)).sendKeys(data[7]);
+		//		driver.findElement(By.id(RegisterUser.desglst)).sendKeys(Keys.TAB);
+				System.out.println("Value Inputed for designation");						
+				Thread.sleep(2000);
+				
+				
+				driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(data[8]);
+			//	driver.findElement(By.id(RegisterUser.admnlst)).sendKeys(Keys.TAB);
+				System.out.println("Value selected for Admin_User");						
+				Thread.sleep(2000);
+				
+			
+				driver.findElement(By.xpath(RegisterUser.submitBtn)).click();
+			//	System.out.println("Clicked Submit Button");
+				Thread.sleep(2000);
+				
+				driver.findElement(By.xpath(RegisterUser.popupOk)).click();
+				System.out.println("Clicked Ok Button");
+				Thread.sleep(2000);
+				
+				String submitsuccess = "New user BBCU_hiraroy has been created successfully and waiting for approval.";
+				String submitsuccessVal = driver.findElement(By.xpath(RegisterUser.msgSuccess)).getText();
+				
+				if (submitsuccessVal.equals(submitsuccess))
+				{
+				Result = "Pass";
+				Thread.sleep(2000);
+				}
+				else
+				{
+				Result = "Fail";
+				Thread.sleep(2000);
+				}
+		//		driver.findElement(By.xpath(Dasboard.home)).click();
+				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
+				ExcelReport.screenShot(testCaseName);
+				
+			}catch(Exception e){
+				
+				System.out.println(e);
+				
+			}
 		
-		
+
+			
 	
 	}
 	
