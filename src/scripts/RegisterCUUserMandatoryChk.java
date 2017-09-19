@@ -1,5 +1,7 @@
 package scripts;
 
+// Archita
+
 import java.awt.AWTException;
 import java.awt.HeadlessException;
 import java.io.IOException;
@@ -23,7 +25,7 @@ public class RegisterCUUserMandatoryChk extends Driver{
 	
 	{
 		System.out.println("Register User Error Check");
-		//String DuplicacyChk = "";
+		String DuplicacyChk = "";
 		try{
 			
 			testSuiteName="RegisterCUUserMandatoryChk";
