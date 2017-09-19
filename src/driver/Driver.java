@@ -242,7 +242,9 @@ public class Driver {
 						assertions=row.getCell(5).getStringCellValue().toString().trim();
 						String AssertionsArray[]=assertions.split("~~");
 						
-						numberOfParams = testData .replaceAll("~~[^,]","").length();  
+						numberOfParams = testData .replaceAll("~~","").length();
+						String numberOfParams1 = testData .replaceAll("~~","");
+						System.out.println("Number of Param1: "+numberOfParams1);
 						
 						System.out.println("testSuiteName: "+testSuiteName);
 						System.out.println("testCaseName: "+testCaseName);
