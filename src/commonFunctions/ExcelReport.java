@@ -46,6 +46,7 @@ public class ExcelReport extends Driver{
 		try {
 
 			String fileName = TestReportsPath+"\\TestResult_" + dateNow + ".xlsx";
+			System.out.println("We are in");
 
 			XSSFWorkbook workbook = new XSSFWorkbook();
 			XSSFSheet sheet = workbook.createSheet("Automation Result");

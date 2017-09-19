@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commonFunctions.ExcelReport;
+import commonFunctions.HTMLReport;
 import driver.Driver;
 import objectRepository.Dasboard;
 import objectRepository.RegisterUser;
@@ -24,28 +25,38 @@ public class RegisterCUUserMandatoryChk extends Driver{
 	public static void mandatoryErrorChk() 
 	
 	{
-		System.out.println("Register User Error Check");
-		String DuplicacyChk = "";
+		
+		testSuiteName="RegisterCUUserMandatoryChk";
+		testCaseName="mandatoryErrorChk";
+		HTMLReport.startTest(testSuiteName,testCaseName);
+
+		
 		try{
-			
-			testSuiteName="RegisterCUUserMandatoryChk";
-			testCaseName="mandatoryErrorChk";
-			
+					
 			String titel=driver.getTitle();
 			System.out.println("tite"+titel);
+			HTMLReport.logTest("RegisterUser Page", ""+titel, "INFO", "RegisterUser", "", "");
 			Thread.sleep(2000);
 			
 			driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+			HTMLReport.logTest("RegisterUser Page", "RegisterCUUserMandatoryChk", "INFO", "RegisterUser", "User Manegment Clicked", "");
+			System.out.println("User Mgmt Clicked");
 			Thread.sleep(2000);
 			
 			driver.findElement(By.xpath(Dasboard.createUser)).click();
+			System.out.println("Crt Usr Clicked");
+			HTMLReport.logTest("RegisterUser Page", "RegisterCUUserMandatoryChk", "INFO", "RegisterUser", "Create User Clicked", "");
 			Thread.sleep(2000);
 			
 			driver.findElement(By.id(RegisterUser.userTypeCu)).click();
+			HTMLReport.logTest("RegisterUser Page", "RegisterUserSetup", "INFO", "RegisterUser", "BBCU Radio Button Clicked", "");
+			System.out.println("BBCU rd Button Clicked");
 			Thread.sleep(2000);
 			
 			
 			driver.findElement(By.xpath(RegisterUser.submitBtn)).click();
+			System.out.println("Clicked");
+			HTMLReport.logTest("RegisterUser Page", "RegisterUser", "INFO", "RegisterUser", "Submit Button Clicked", "");
 			Thread.sleep(2000);
 			
 			String username = "Please provide login Id.";
