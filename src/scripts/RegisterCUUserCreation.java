@@ -65,7 +65,7 @@ public class RegisterCUUserCreation extends Driver{
 			Thread.sleep(2000);
 			
 			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).click();
-			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).sendKeys(Keys.TAB);
+		//	driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).sendKeys(Keys.TAB);
 			System.out.println("Clicked");
 			Thread.sleep(2000);
 			

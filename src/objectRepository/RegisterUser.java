@@ -12,6 +12,7 @@ public class RegisterUser {
 	/*----------------------------------------------ID----------------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------*/
 	
+	
 	//BBCU or BBPOU type selection 
 	public static String userTypeOu="userTypeOu";
 	public static String userTypeCu="userTypeCu";
