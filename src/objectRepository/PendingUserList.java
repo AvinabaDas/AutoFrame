@@ -74,6 +74,8 @@ public class PendingUserList {
 	public static String backBtn=".//*[@id='btnBack']";
 	
 	
+	public static String searchgridbox=".//*[@id='usrListTable_filter']/label/input";
+	
 	public static String okBtn=".//*[@id='popup_ok']";
 	public static String cancelBtn=".//*[@id='popup_cancel']";
 	public static String commentsBox=".//*[@id='comment']";
