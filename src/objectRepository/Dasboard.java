@@ -26,6 +26,7 @@ public class Dasboard {
 	
 	public static String userMgmt=".//*[@id='side-menu']/li[6]/a";
 	public static String createUser=".//*[@id='user-management']/li[1]/a";
-	public static String PendingUserListCU=".//*[@id='user-management']/li[2]/a";
+	public static String pendingUserListCU=".//*[@id='user-management']/li[2]/a";
+	public static String userListmenu=".//*[@id='showUserList']";
 	
 }
