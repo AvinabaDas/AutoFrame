@@ -96,7 +96,7 @@ public class Driver {
 		
 		//Initialize browser for application under test
 		browserInitialization();
-		System.out.println("Selected");
+		//System.out.println("Selected");
 		
 		//Read execution scenarios from excel file and trigger automation test cases to run
 		executeScenarios();
