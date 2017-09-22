@@ -68,7 +68,7 @@ public class Dasboard {
 	public static String jobParameters=".//*[@id='page-wrapper']/div/div/div/div[9]/div/div/div[4]/div[1]/label";
 	public static String jobstepDetails=".//*[@id='page-wrapper']/div/div/div/div[9]/div/div/div[5]/div[1]/label";
 	
-	
+	//Dashboard
 	public static String logout=".//*[@id='rmenu']/div/div[1]/div/a/span";
 	
 	public static String userMgmt=".//*[@id='side-menu']/li[6]/a";
