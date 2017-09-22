@@ -81,7 +81,7 @@ public class PendingUserListCU extends Driver{
 			driver.findElement(By.xpath(PendingUserList.removebtnlogin)).click();
 			System.out.println("Remove btn Clicked");
 			Thread.sleep(2000);
-			
+//			
 			//* Search by Login Id end
 			
 			//* Search by OU Name  Start
@@ -114,7 +114,7 @@ public class PendingUserListCU extends Driver{
 			System.out.println("record Selected from the grid");						
 			Thread.sleep(2000);
 			driver.findElement(By.xpath(PendingUserList.viewBtn)).click();
-			System.out.println("Search btn clicked");						
+			System.out.println("View btn clicked");						
 			Thread.sleep(2000);
 			
 			driver.findElement(By.xpath(PendingUserList.approveBtn)).click();
@@ -135,7 +135,7 @@ public class PendingUserListCU extends Driver{
 	}
 			
 	//* For Rejection-- selection from the grid start
-	public static void RejectUser(String[] data,String[] assertion) 
+	public static void RejectUser(String[] data,String[] assertion)
 			
 	{
 				
@@ -149,25 +149,25 @@ public class PendingUserListCU extends Driver{
 				pendingUserListMenu();
 				
 				
-				driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).sendKeys(data[0]);
-				System.out.println("Value selected for LoginId");
-				driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).click();
-				System.out.println("Value selected for searchbydropdnw");
-				Thread.sleep(2000);
-		
-				driver.findElement(By.id(PendingUserList.btnAdd)).click();
-				System.out.println("Add btn Clicked");
-				Thread.sleep(2000);
-
-				driver.findElement(By.id(PendingUserList.srchUserNametxtbx)).sendKeys(data[1]);
-				System.out.println("Value entered for login ID");
-				driver.findElement(By.id(PendingUserList.srchUserNametxtbx)).click();
-				System.out.println("Value selected for searchbydropdnw");
-				Thread.sleep(2000);
-			
-				driver.findElement(By.xpath(PendingUserList.btnSearch)).click();
-				System.out.println("Search btn clicked");						
-				Thread.sleep(2000);
+//				driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).sendKeys(data[0]);
+//				System.out.println("Value selected for LoginId");
+//				driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).click();
+//				System.out.println("Value selected for searchbydropdnw");
+//				Thread.sleep(2000);
+//		
+//				driver.findElement(By.id(PendingUserList.btnAdd)).click();
+//				System.out.println("Add btn Clicked");
+//				Thread.sleep(2000);
+//
+//				driver.findElement(By.id(PendingUserList.srchUserNametxtbx)).sendKeys(data[1]);
+//				System.out.println("Value entered for login ID");
+//				driver.findElement(By.id(PendingUserList.srchUserNametxtbx)).click();
+//				System.out.println("Value selected for searchbydropdnw");
+//				Thread.sleep(2000);
+//			
+//				driver.findElement(By.xpath(PendingUserList.btnSearch)).click();
+//				System.out.println("Search btn clicked");						
+//				Thread.sleep(2000);
 				
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(PendingUserList.radioBtnSelected)).click();
@@ -185,7 +185,7 @@ public class PendingUserListCU extends Driver{
 				System.out.println("Ok btn clicked");						
 				Thread.sleep(2000);
 				
-				driver.findElement(By.xpath(PendingUserList.commentsBox)).sendKeys(data[2]);
+				driver.findElement(By.xpath(PendingUserList.commentsBox)).sendKeys(data[0]);
 				System.out.println("Value entered in commentsBox");
 				Thread.sleep(2000);
 		
