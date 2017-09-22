@@ -32,7 +32,7 @@ public class PendingUserListCU extends Driver{
 				driver.findElement(By.xpath(Dasboard.pendingUserListCU)).click();
 				System.out.println("PendingUserListCU menu Clicked");
 				Thread.sleep(2000);
-				Thread.sleep(2000);
+				//Thread.sleep(2000);
 		}
 		
 			catch(Exception e){
