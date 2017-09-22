@@ -6,7 +6,7 @@ package objectRepository;
  * 
  * 
  */
-public class UserList {
+public class UserListObj {
 
 	/*----------------------------------------------------------------------------------------------------------*/
 	/*----------------------------------------------ID----------------------------------------------------------*/
@@ -45,4 +45,10 @@ public class UserList {
 	public static String searchtxtboxgrid=".//*[@id='usrListTable_filter']/label/input";
 	public static String viewBtn=".//*[@id='btnView']";
 	
+	public static String deptDrowpDown=".//*[@id='departmntlst']";
+	public static String updateBtn=".//*[@id='bUpdate']";
+	
+	public static String okBtn=".//*[@id='popup_ok']";
+	public static String cancelBtn=".//*[@id='popup_cancel']";
+
 }
