@@ -44,6 +44,7 @@ public class Driver {
 	public static String testData="";
 	public static String assertions="";
 	public static int numberOfParams=0;
+	public static int numberOfAssarParams=0;
 	
 	public static String TestScenariosExcelPath="";
 	public static String GeckoDriverPath="";
@@ -233,18 +234,25 @@ public class Driver {
 						testCaseName=row.getCell(2).getStringCellValue().toString().trim();
 						try {
 							testData=row.getCell(4).getStringCellValue().toString().trim();
+							assertions=row.getCell(5).getStringCellValue().toString().trim();
+							
 						}catch(Exception e){
 							//testData=String.valueOf(BigInteger.valueOf(row.getCell(4).getNumercCellValue()));
 							testData=String.valueOf(new BigDecimal(row.getCell(4).getNumericCellValue()));
+							assertions=String.valueOf(new BigDecimal(row.getCell(5).getNumericCellValue()));
 						}
 						String DataArray[]=testData.split("~~");
 						
-						assertions=row.getCell(5).getStringCellValue().toString().trim();
+						//assertions=row.getCell(5).getStringCellValue().toString().trim();
 						String AssertionsArray[]=assertions.split("~~");
 						
 						numberOfParams = testData .replaceAll("~~","").length();
 						String numberOfParams1 = testData .replaceAll("~~","");
-						System.out.println("Number of Param1: "+numberOfParams1);
+						System.out.println("Number of Data Param: "+numberOfParams1);
+						
+						numberOfAssarParams = assertions .replaceAll("~~","").length();						
+						String numberOfAssarParams1 = assertions.replaceAll("~~","");
+						System.out.println("Number of Assertions Param: "+numberOfAssarParams1);
 						
 						System.out.println("testSuiteName: "+testSuiteName);
 						System.out.println("testCaseName: "+testCaseName);
@@ -266,7 +274,7 @@ public class Driver {
 							arrayOfVariables[ji]=String.class;
 						}*/
 						
-						if(numberOfParams==0)
+						if(numberOfParams==0 && numberOfAssarParams==0)
 						{
 							Method m=clazz.getDeclaredMethod(testCaseName);
 							System.out.println("Method Name : "+m);
