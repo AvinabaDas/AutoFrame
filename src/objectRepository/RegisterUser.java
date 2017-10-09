@@ -28,6 +28,8 @@ public class RegisterUser {
 	public static String empId="empId";
 	public static String userName="userName";
 	
+	
+	
 	public static String lastName="lastName";
 	public static String emailId="emailId";
 	public static String mobileNo="mobileNo";
@@ -59,6 +61,8 @@ public class RegisterUser {
 	public static String moberr=".//*[@id='moberr']";
 	public static String mobsucc=".//*[@id='mobavail']";
 	
+	
+	public static String OUID=".//*[@id='orgunitid']";
 	
 	public static String depterr=".//*[@id='depterr']";
 	public static String designerr=".//*[@id='desinerr']";

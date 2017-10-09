@@ -64,43 +64,39 @@ public class RegisterOUUserCreation extends Driver{
 			userSetupOUUser();
 			
 			
-			driver.findElement(By.id(RegisterUser.oulist)).sendKeys(data[0]);
-			driver.findElement(By.id(RegisterUser.oulist)).click();
-			System.out.println("Value Inputed for OU");						
-			Thread.sleep(2000);
-	
-			driver.findElement(By.id(RegisterUser.loginId)).sendKeys(data[1]);
-			//String ChkValue = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
-			//System.out.println("Value Inputed"+ChkValue);
+			driver.findElement(By.id(RegisterUser.loginId)).sendKeys(data[0]);
+			System.out.println("user id entered");
 			Thread.sleep(2000);
 			
 			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).click();
 			System.out.println("Clicked");
 			Thread.sleep(2000);
+			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).sendKeys(Keys.TAB);
+			driver.findElement(By.id(RegisterUser.OUID)).sendKeys(Keys.TAB);
 
-			driver.findElement(By.id(RegisterUser.userName)).sendKeys(data[2]);
+			driver.findElement(By.id(RegisterUser.userName)).sendKeys(data[1]);
 		    driver.findElement(By.id(RegisterUser.userName)).sendKeys(Keys.TAB);
 		    System.out.println("Value Inputed for First Name");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.id(RegisterUser.lastName)).sendKeys(data[3]);
+			driver.findElement(By.id(RegisterUser.lastName)).sendKeys(data[2]);
 		    driver.findElement(By.id(RegisterUser.lastName)).sendKeys(Keys.TAB);
 		    System.out.println("Value Inputed for last Name");						
 			Thread.sleep(2000);
 					
-			driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[4]);
+			driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[3]);
 			System.out.println("Value Inputed for Email");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(data[5]);
+			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(data[4]);
 			System.out.println("Value Inputed for mobileNo");						
 			Thread.sleep(2000);
 	
-			driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(data[6]);
+			driver.findElement(By.id(RegisterUser.departmntlst)).sendKeys(data[5]);
 			System.out.println("Value Inputed for departmnt");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(data[7]);
+			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(data[6]);
 			System.out.println("Value Inputed for designation");						
 			Thread.sleep(2000);
 			
@@ -113,7 +109,7 @@ public class RegisterOUUserCreation extends Driver{
 			System.out.println("Clicked Ok Button");
 			Thread.sleep(2000);
 			
-			String submitsuccess = "New user KA11_admin1 has been created successfully and waiting for approval.";
+			String submitsuccess = "New user RB02_user100 has been created successfully and waiting for approval.";
 			String submitsuccessVal = driver.findElement(By.xpath(RegisterUser.msgSuccess)).getText();
 			
 			if (submitsuccessVal.equals(submitsuccess))
