@@ -75,5 +75,5 @@ public class Dasboard {
 	public static String createUser=".//*[@id='user-management']/li[1]/a";
 	public static String pendingUserListCU=".//*[@id='user-management']/li[2]/a";
 	public static String userListmenu=".//*[@id='showUserList']";
-	
+	public static String resetUnloclmenu=".//*[@id='user-management']/li[4]/a";
 }

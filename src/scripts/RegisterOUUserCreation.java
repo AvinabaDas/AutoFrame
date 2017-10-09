@@ -16,14 +16,14 @@ import driver.Driver;
 import objectRepository.Dasboard;
 import objectRepository.RegisterUser;
 
-public class RegisterOUAdminCreation extends Driver{
+public class RegisterOUUserCreation extends Driver{
 	
-	public static void userSetupOU() 
+	public static void userSetupOUUser() 
 	{
 		try
 		{
-			testSuiteName="RegisterOUAdminCreation";
-			testCaseName="UserSetupMenu";
+			testSuiteName="RegisterOUUserCreation";
+			testCaseName="userSetupOUUser";
 			HTMLReport.startTest(testSuiteName,testCaseName);
 					
 				String titel=driver.getTitle();
@@ -35,10 +35,10 @@ public class RegisterOUAdminCreation extends Driver{
 				driver.findElement(By.xpath(Dasboard.createUser)).click();
 				System.out.println("Crt Usr Clicked");
 				Thread.sleep(2000);
-				driver.findElement(By.id(RegisterUser.userTypeOu)).click();
-				System.out.println("BBOU rd Button Clicked");
-				Thread.sleep(2000);
-				Thread.sleep(2000);
+				//driver.findElement(By.id(RegisterUser.userTypeOu)).click();
+				//System.out.println("BBOU rd Button Clicked");
+				//Thread.sleep(2000);
+				
 			
 			}
 		
@@ -50,18 +50,18 @@ public class RegisterOUAdminCreation extends Driver{
 	
 	//**CU Admin Data Entry and submission **//
 	
-	public static void BBOUAdminUserSubmission(String[] data,String[] assertion) 
+	public static void BBOUUserSubmission(String[] data,String[] assertion) 
 	
 	{
 		
-		System.out.println("BBOU Admin User Creation");
+		System.out.println("BBOU User Creation");
 						
 		try{
 			
-			testSuiteName="RegisterOUAdminCreation";
-			testCaseName="BBOUAdminUserSubmission";
+			testSuiteName="RegisterOUUserCreation";
+			testCaseName="OUUserSubmission";
 			
-			userSetupOU();
+			userSetupOUUser();
 			
 			
 			driver.findElement(By.id(RegisterUser.oulist)).sendKeys(data[0]);

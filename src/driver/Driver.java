@@ -101,6 +101,8 @@ public class Driver {
 		//Read execution scenarios from excel file and trigger automation test cases to run
 		executeScenarios();
 		
+		//CLosing Browser	
+		browserClose();
 		
 		
 		
@@ -181,6 +183,21 @@ public class Driver {
 				}
 
 	}
+	
+	
+public static void browserClose() {
+		
+		try{
+			driver.close();
+			Thread.sleep(500);
+			driver.quit();
+			Thread.sleep(500);
+		}
+		catch (Exception e) {
+		     e.printStackTrace();
+		}
+			
+		}
 	
 	
 	/*

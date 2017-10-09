@@ -1,20 +1,15 @@
 package scripts;
 
-import java.awt.AWTException;
-import java.awt.HeadlessException;
-import java.io.IOException;
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commonFunctions.ExcelReport;
 import commonFunctions.HTMLReport;
 import driver.Driver;
 import objectRepository.Dasboard;
-import objectRepository.LoginPage;
+
 import objectRepository.RegisterUser;
 
 public class RegisterCUUserDupChk extends Driver{
@@ -62,11 +57,13 @@ public class RegisterCUUserDupChk extends Driver{
 	
 	
 	
-	public static void DuplicacyChk(String[] data,String[] assertion) 
+	public static void DuplicacyChkUser(String[] data,String[] assertion) 
 	
 	{
 		testSuiteName="RegisterCUUserDupChk";
-		testCaseName="DuplicacyChk";
+		testCaseName="DuplicacyChkUser";
+		
+		userSetup();
 		HTMLReport.startTest(testSuiteName,testCaseName);
 		
 		System.out.println("Register User Duplicacy Check");
@@ -91,12 +88,13 @@ public class RegisterCUUserDupChk extends Driver{
 			
 			if (ChkValue.equals(ExpectedValue))
 			{
-				//driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+				
 				DuplicacyChk = driver.findElement(By.id(RegisterUser.loadedErrorResult)).getText();
 				System.out.println(DuplicacyChk);
 				Result = DuplicacyChk;
 				HTMLReport.logTest("RegisterUserPage", ""+ExpectedValue, "PASS", "Button Clicked", ""+Result, "");
 				Thread.sleep(2000);
+				
 			}
 			else
 			{
@@ -107,7 +105,7 @@ public class RegisterCUUserDupChk extends Driver{
 				Thread.sleep(2000);
 			}
 						
-				
+			driver.findElement(By.xpath(Dasboard.userMgmt)).click();	
 			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
 			ExcelReport.screenShot(testCaseName);
 			HTMLReport.endTest();
@@ -116,6 +114,8 @@ public class RegisterCUUserDupChk extends Driver{
 		}catch(Exception e){
 			
 			System.out.println(e);
+			HTMLReport.logTest("Dashboard Page", "DashboardView", "INFO", "Dashboard", "" +e, "");
+
 			
 		}
 			
@@ -133,6 +133,8 @@ public class RegisterCUUserDupChk extends Driver{
 				testSuiteName="RegisterCUUserDupChk";
 				testCaseName="DuplicacyChkEmp";
 				
+				userSetup();
+				
 				driver.findElement(By.id(RegisterUser.empId)).sendKeys(data[0]);
 				driver.findElement(By.id(RegisterUser.empId)).sendKeys(Keys.TAB);
 				System.out.println("Value Inputed");						
@@ -144,7 +146,7 @@ public class RegisterCUUserDupChk extends Driver{
 				String ChkValueEmpDup = "";
 				if (ChkValueEmp.equals(ExpectedValueEmp))
 				{
-					//driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+					
 					ChkValueEmpDup = driver.findElement(By.xpath(RegisterUser.empIderr)).getText();
 					System.out.println("Empl ID negative:" + ChkValueEmpDup);
 					Result = ChkValueEmpDup;
@@ -158,7 +160,7 @@ public class RegisterCUUserDupChk extends Driver{
 					Thread.sleep(2000);
 				}
 				
-	
+				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
 			//	driver.findElement(By.xpath(Dasboard.home)).click();
 				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
 				ExcelReport.screenShot(testCaseName);
@@ -166,24 +168,11 @@ public class RegisterCUUserDupChk extends Driver{
 			}catch(Exception e){
 				
 				System.out.println(e);
+				HTMLReport.logTest("Dashboard Page", "DashboardView", "INFO", "Dashboard", "" +e, "");
+
 				
 			}
 		
-	
-					
-			//Assert and write Report to File
-			
-			/** if(titel.equalsIgnoreCase("Dashboard"))
-			{
-				Result="Pass";
-				
-			}else{
-				
-				Result="Fail";
-				
-			}**/
-			
-			
 		
 		}
 		
@@ -199,6 +188,8 @@ public class RegisterCUUserDupChk extends Driver{
 				testSuiteName="RegisterCUUserDupChk";
 				testCaseName="DuplicacyChkEmail";
 				
+				userSetup();
+				
 				driver.findElement(By.id(RegisterUser.emailId)).sendKeys(data[0]);
 				driver.findElement(By.id(RegisterUser.emailId)).sendKeys(Keys.TAB);
 				System.out.println("Value Inputed");						
@@ -210,7 +201,7 @@ public class RegisterCUUserDupChk extends Driver{
 				String ChkValueEmailDup = "";
 				if (ChkValueEmail.equals(ChkValueEmailDup))
 				{
-					driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+					//driver.findElement(By.xpath(Dasboard.userMgmt)).click();
 					ChkValueEmailDup = driver.findElement(By.xpath(RegisterUser.emailiderr)).getText();
 					System.out.println("Empl ID negative:" + ExpectedValueEmp);
 					Result = ChkValueEmailDup;
@@ -225,13 +216,15 @@ public class RegisterCUUserDupChk extends Driver{
 				}
 				
 	
-		//		driver.findElement(By.xpath(Dasboard.home)).click();
+				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
 				ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
 				ExcelReport.screenShot(testCaseName);
 				
 			}catch(Exception e){
 				
 				System.out.println(e);
+				HTMLReport.logTest("Dashboard Page", "DashboardView", "INFO", "Dashboard", "" +e, "");
+				
 				
 			}
 		
@@ -266,6 +259,8 @@ public class RegisterCUUserDupChk extends Driver{
 			testSuiteName="RegisterCUUserDupChk";
 			testCaseName="DuplicacyChkmob";
 			
+			userSetup();
+			
 			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(data[0]);
 			driver.findElement(By.id(RegisterUser.mobileNo)).sendKeys(Keys.TAB);
 			System.out.println("Value Inputed");						
@@ -277,7 +272,7 @@ public class RegisterCUUserDupChk extends Driver{
 			String ChkValueMobDup = "";
 			if (ChkValueMob.equals(ExpectedValueMob))
 			{
-				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+				//driver.findElement(By.xpath(Dasboard.userMgmt)).click();
 				ChkValueMobDup = driver.findElement(By.xpath(RegisterUser.moberr)).getText();
 				System.out.println("Empl ID negative:" + ExpectedValueMob);
 				Result = ChkValueMobDup;
@@ -291,7 +286,7 @@ public class RegisterCUUserDupChk extends Driver{
 				Thread.sleep(2000);
 			}
 			
-
+			driver.findElement(By.xpath(Dasboard.userMgmt)).click();
 	//		driver.findElement(By.xpath(Dasboard.home)).click();
 			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
 			ExcelReport.screenShot(testCaseName);
@@ -299,28 +294,12 @@ public class RegisterCUUserDupChk extends Driver{
 		}catch(Exception e){
 			
 			System.out.println(e);
+			HTMLReport.logTest("Dashboard Page", "DashboardView", "INFO", "Dashboard", "" +e, "");
+
 			
 		}
 	
 
-				
-		
-		
-		/** if(titel.equalsIgnoreCase("Dashboard"))
-		{
-			Result="Pass";
-			
-		}else{
-			
-			Result="Fail";
-			
-		}**/
-		
-				
-		
-		
-		
-	
 	}
 	
 	

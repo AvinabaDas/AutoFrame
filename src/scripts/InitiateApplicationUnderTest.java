@@ -23,6 +23,7 @@ public class InitiateApplicationUnderTest extends Driver {
 			HTMLReport.startTest(testSuiteName,testCaseName);
 			
 			driver.manage().window().maximize();
+			Thread.sleep(500);
 			driver.get(QA_ENVIRONMENT);
 			HTMLReport.logTest("Browser", "Open Browser", "INFO", "CHROME", "The CHROME Browser Launched", "");
 			HTMLReport.logTest("Browser", "Open Browser", "PASS", "CHROME", "The CHROME browser was opened.", "");

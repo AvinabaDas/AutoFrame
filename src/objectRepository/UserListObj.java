@@ -1,10 +1,7 @@
 package objectRepository;
 
-
 /*
- * 
- * 
- * 
+ *
  */
 public class UserListObj {
 
@@ -12,7 +9,6 @@ public class UserListObj {
 	/*----------------------------------------------ID----------------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------*/
 	
-		
 	/*----------------------------------------------------------------------------------------------------------*/
 	/*----------------------------------------------XPATH-------------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------*/
@@ -24,6 +20,8 @@ public class UserListObj {
 	
 	public static String searchByOUIDLbl=".//*[@id='loginIdList']/td[1]/label";
 	public static String searchByOUIDtxtBx=".//*[@id='srchUserName']";
+	
+	public static String ouSearchDrpdown=".//*[@id='ouSelect']";
 	
 	public static String searchByStatusLbl=".//*[@id='statusList']/td[1]/label";
 	public static String searchByStatusDrpdwn=".//*[@id='statusSelect']";
@@ -45,8 +43,14 @@ public class UserListObj {
 	
 	public static String deptDrowpDown=".//*[@id='departmntlst']";
 	public static String updateBtn=".//*[@id='bUpdate']";
+
+	
+	public static String deactivateBtn=".//*[@id='bDeactivate']";
+	public static String deleteBtn=".//*[@id='bDelete']";
 	
 	public static String okBtn=".//*[@id='popup_ok']";
 	public static String cancelBtn=".//*[@id='popup_cancel']";
 
+	public static String resetBtn=".//*[@id='addUpdateUserDetail']/div[2]/div/div/button[2]";
+	public static String unlockBtn=".//*[@id='addUpdateUserDetail']/div[2]/div/div/button[1]";	
 }

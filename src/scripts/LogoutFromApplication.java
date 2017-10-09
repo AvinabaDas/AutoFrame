@@ -35,13 +35,7 @@ public class LogoutFromApplication extends Driver{
 			System.out.println("titel"+titel);
 			HTMLReport.logTest("LogoutPage", "Admin Logout Page", "INFO", "Title", ""+titel, "");
 			Thread.sleep(500);
-			//WebDriver webDriver = null;
-			//WebDriverWait wait = new WebDriverWait(webDriver, 60);
-			//wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(Dasboard.helthInfo))));
 			
-			//System.out.println("HelthInfo is  "+driver.findElement(By.xpath(Dasboard.helthInfo)));
-			
-					
 			//Assert and write Report to File
 			
 			 WebElement element = driver.findElement(By.xpath(".//*[@id='rmenu']/div/div[1]/div/a/span"));
@@ -63,18 +57,14 @@ public class LogoutFromApplication extends Driver{
 				 Result="Fail";
 			 }
 			 
-			 
-		       
-		        
-		        Thread.sleep(500);
-			
+		    Thread.sleep(500);
 			System.out.println("Byeeee");
 			HTMLReport.logTest("LogoutPage", "Admin Logout Page", "PASS", "Logout", "Logout Successfull.",  "");
-			driver.close();
-			
 			ExcelReport.reportGeneration(testSuiteName, testCaseName, Result);
 			ExcelReport.screenShot(testCaseName);
 			HTMLReport.endTest();
+			
+			
 			
 			
 		}catch(Exception e){
