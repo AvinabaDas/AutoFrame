@@ -29,7 +29,7 @@ public class RegisterOUUserCreation extends Driver{
 				String titel=driver.getTitle();
 				System.out.println("tite"+titel);
 				Thread.sleep(2000);
-				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+				driver.findElement(By.xpath(Dasboard.OUuserMgmt)).click();
 				System.out.println("User Mgmt Clicked");
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(Dasboard.createUser)).click();
@@ -59,7 +59,7 @@ public class RegisterOUUserCreation extends Driver{
 		try{
 			
 			testSuiteName="RegisterOUUserCreation";
-			testCaseName="OUUserSubmission";
+			testCaseName="BBOUUserSubmission";
 			
 			userSetupOUUser();
 			
@@ -72,8 +72,13 @@ public class RegisterOUUserCreation extends Driver{
 			System.out.println("Clicked");
 			Thread.sleep(2000);
 			driver.findElement(By.id(RegisterUser.checkAvailibilitybtn)).sendKeys(Keys.TAB);
-			driver.findElement(By.id(RegisterUser.OUID)).sendKeys(Keys.TAB);
-
+			System.out.println("Tab to Orgid");
+			Thread.sleep(2000);
+			
+			driver.findElement(By.xpath(RegisterUser.OUID)).sendKeys(Keys.TAB);
+			System.out.println("Clicked");
+			Thread.sleep(2000);
+			
 			driver.findElement(By.id(RegisterUser.userName)).sendKeys(data[1]);
 		    driver.findElement(By.id(RegisterUser.userName)).sendKeys(Keys.TAB);
 		    System.out.println("Value Inputed for First Name");						
@@ -97,11 +102,11 @@ public class RegisterOUUserCreation extends Driver{
 			Thread.sleep(2000);
 			
 			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(data[6]);
+			driver.findElement(By.id(RegisterUser.desglst)).sendKeys(Keys.TAB);
 			System.out.println("Value Inputed for designation");						
 			Thread.sleep(2000);
 			
-			
-			driver.findElement(By.xpath(RegisterUser.submitBtn)).click();
+			driver.findElement(By.xpath(RegisterUser.OUsubmitBtn)).click();
 			System.out.println("Clicked Submit Button");
 			Thread.sleep(2000);
 			

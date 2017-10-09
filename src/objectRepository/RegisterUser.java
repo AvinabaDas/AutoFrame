@@ -76,6 +76,8 @@ public class RegisterUser {
 	public static String msgSuccess=".//*[@id='msg']";
 	
 	public static String submitBtn=".//*[@id='btncreate']/button";
+	
+	public static String OUsubmitBtn=".//*[@id='bSubmit']";
 	public static String clearBtn=".//*[@id='btnClr']";
 	
 }
