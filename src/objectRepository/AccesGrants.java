@@ -88,8 +88,9 @@ public class AccesGrants {
 	public static String page5=".//*[@id='roleListTable_last']";
 	
 	public static String addtoRoleBtn=".//*[@id='add_to_role']";
-	public static String checkAllMakerBtn="checkAllMakerAccess";
-	public static String checkAllCheckerBtn="checkAllCheckerAccess";
+	public static String checkAllMakerBtn=".//*[@id='checkAllMakerAccess']";
+	public static String checkAllCheckerBtn=".//*[@id='checkAllCheckerAccess']";
+	public static String rolematrix=".//*[@id='tdroleName[0]']";
 	
 	public static String okBtn=".//*[@id='popup_ok']";
 	public static String cancelBtn=".//*[@id='popup_cancel']";

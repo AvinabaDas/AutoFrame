@@ -1,9 +1,16 @@
 package scripts;
 
+import java.awt.event.FocusEvent;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.sun.glass.ui.Window;
 
 import commonFunctions.ExcelReport;
 import commonFunctions.HTMLReport;
@@ -100,7 +107,7 @@ public class CUUserAccess extends Driver{
 			driver.findElement(By.xpath(AccesGrants.selectBtn)).click();
 			HTMLReport.logTest("Access Management Page", "List page selected", "PASS", "click", "Record selected from the grid", "");
 			System.out.println("record Selected from the grid");						
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			
 		    driver.findElement(By.xpath(AccesGrants.page5)).sendKeys(Keys.TAB);
 			driver.findElement(By.xpath(AccesGrants.editViewBtn)).click();
@@ -116,25 +123,23 @@ public class CUUserAccess extends Driver{
 			
 			driver.findElement(By.xpath(AccesGrants.addtoRoleBtn)).click();
 			System.out.println("Ok btn clicked");						
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("scroll(document.body.scrollHeight,0)"); 
+			driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn)).click();
+			System.out.println("Maker All btn clicked");
 			
-			WebDriverWait wait = new WebDriverWait(driver,10);
-			if (!driver.findElement(By.id(AccesGrants.checkAllMakerBtn)).isSelected())
-			wait.until(ExpectedConditions.elementToBeClickable(AccesGrants.checkAllMakerBtn)
-			{
-				
-				driver.findElement(By.id(AccesGrants.checkAllMakerBtn)).click();		
-			}
-			
-		
 				
 			Thread.sleep(2000);
 						
-		    driver.findElement(By.id(AccesGrants.checkAllMakerBtn)).sendKeys(Keys.TAB);
-			driver.findElement(By.id(AccesGrants.checkAllCheckerBtn)).click();
+		    driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn)).sendKeys(Keys.TAB);
+			driver.findElement(By.xpath(AccesGrants.checkAllCheckerBtn)).click();
 			System.out.println("Checker All btn clicked");						
 			Thread.sleep(2000);
+			
+			
+			jse.executeScript("scroll(0, document.body.scrollHeight)"); 
 			
 			driver.findElement(By.xpath(AccesGrants.submitBtn)).click();
 			System.out.println("Submit btn clicked");						
