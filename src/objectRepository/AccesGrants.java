@@ -156,7 +156,7 @@ public class AccesGrants {
 	
 	public static String approveBtn=".//*[@id='addUpdateUserRole']/div[2]/button[1]";
 	public static String rejectBtn=".//*[@id='addUpdateUserRole']/div[2]/button[2]";
-	//public static String comments=".//*[@id='comment']";
+	public static String comments=".//*[@id='comment']";
 	
 		
 }
