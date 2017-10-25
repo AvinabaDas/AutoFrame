@@ -1,23 +1,19 @@
 package scripts;
 
-import java.awt.event.FocusEvent;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.internal.Coordinates;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.sun.glass.ui.Window;
+import org.openqa.selenium.internal.Locatable;
 
 import commonFunctions.ExcelReport;
 import commonFunctions.HTMLReport;
 import driver.Driver;
 import objectRepository.AccesGrants;
 import objectRepository.Dasboard;
-import objectRepository.RegisterUser;
 
 
 
@@ -113,32 +109,181 @@ public class CUUserAccess extends Driver{
 			driver.findElement(By.xpath(AccesGrants.editViewBtn)).click();
 			HTMLReport.logTest("Access Management Page", "List page selected", "PASS", "click", "View button clicked", "");
 			System.out.println("Search btn clicked");						
-			Thread.sleep(5000);
-			
-		    driver.findElement(By.xpath(AccesGrants.accessVelocit)).sendKeys(Keys.TAB);
-			driver.findElement(By.xpath(AccesGrants.accessAll)).click();
-			HTMLReport.logTest("Access Management Page", "User Management", "PASS", "click", "View button clicked", "");
-			System.out.println("Search btn clicked");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(AccesGrants.addtoRoleBtn)).click();
-			System.out.println("Ok btn clicked");						
-			Thread.sleep(2000);
+			//Select Role Based on Value
 			
+//		    driver.findElement(By.xpath(AccesGrants.accessVelocit)).sendKeys(Keys.TAB);
+//			driver.findElement(By.xpath(AccesGrants.accessAll)).click();
+//			HTMLReport.logTest("Access Management Page", "User Management", "PASS", "click", "View button clicked", "");
+//			System.out.println("Access ALL btn clicked");						
+//			Thread.sleep(2000);
+			
+			
+//			WebElement table = driver.findElement(By.xpath("//div[@id ='profile_access']/table"));
+//	        List <WebElement> row = driver.findElements(By.tagName("tr"));
+//	        System.out.println (row.size());
+//            int i = 0;
+//            int l = assertion.length;
+//            System.out.println ("Assertion: "+l);
+//	           boolean isTrue=false;
+//	           for (int j=0;j<row.size();j++)
+//	           {
+//	        	   if(!isTrue){
+//	        	   List <WebElement> col = row.get(j).findElements(By.tagName("td"));
+//	               col.size();
+//	               
+//	               for (int k=0;k<col.size();k++)
+//	               {
+//	                   String cv = col.get(k).getText();
+//	                   System.out.println("Actual Value: "+cv);
+//	                   
+//		        	   if(cv.equalsIgnoreCase(assertion[i]))
+//		        	   {
+//		        		   
+//		        		  // ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//td[contains(text(),'"+assertion[i]+"')]/preceding-sibling::td/input[@type='checkbox']")));
+//		        		   WebElement element = driver.findElement(By.xpath("//td[contains(text(),'"+assertion[i]+"')]/preceding-sibling::td/input[@type='checkbox']"));
+//		        		   Actions actions = new Actions(driver);
+//		        		   actions.moveToElement(element);
+//		        		   actions.perform();
+//			        	   element.click();
+//			        	   System.out.println("Clicked :"+cv+" vs "+assertion[i]);
+//			        	   i++;
+//			        	   System.out.println("Value of i :"+i);
+//			        	   Thread.sleep(2000);
+//			        	 
+//			   			
+//		        	   }
+//		        	   if (l==i)
+//		        	   {
+//		        		   isTrue=true;
+//		        		   break;
+//		        	   }
+//		        	  
+//	               }
+//	        	   }
+//	           }
+//			
 			JavascriptExecutor jse = (JavascriptExecutor)driver;
-			jse.executeScript("scroll(document.body.scrollHeight,0)"); 
-			driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn)).click();
-			System.out.println("Maker All btn clicked");
+			int alength = assertion.length;
 			
+			for (int i=0;i<alength;)
+			{
+				//WebElement elementToClick  = driver.findElement(By.xpath("//td[contains(text(),'"+assertion[i]+"')]/preceding-sibling::td/input[@type='checkbox']"));
+				WebElement elementToClick  = driver.findElement(By.xpath("//td/input[@type='checkbox' and @value= '"+assertion[i]+"']"));
+				System.out.println("Checked: "+elementToClick );
 				
+				try
+				{
+					driver.findElement(By.xpath("//td/input[@type='checkbox' and @value= '"+assertion[i]+"']")).click();
+				}
+				catch(Exception e)
+				{
+					Point classname = elementToClick.getLocation();
+			        int xcordi = classname.getX();
+			        xcordi =  xcordi-20;
+			        System.out.println("Element's Position from left side "+xcordi+" pixels.");
+			        
+			        int ycordi = classname.getY();
+			        ycordi = ycordi-20;
+			        System.out.println("Element's Position from top "+ycordi+" pixels.");
+			        
+			        //jse.executeScript("arguments[0].scrollIntoView();",elementToClick);
+					jse.executeScript("window.scrollBy("+xcordi+","+ycordi+")");
+					Thread.sleep(2000);
+					driver.findElement(By.xpath("//td/input[@type='checkbox' and @value= '"+assertion[i]+"']")).click();	
+				}
+
+//				jse.executeScript("window.scrollBy(0,"+ycordi+")");
+//				Actions action = new Actions(driver);
+//				action.moveToElement(elementToClick).click().build().perform();
+//				System.out.println("Action: "+action);
+		        
+		       		        
+		        
+				
+				System.out.println("Clicked: "+assertion[i]);
+				i=i+1;
+			}
+			
+			
+
+			Thread.sleep(2000);
+			
+			try
+			{
+//				WebElement addelementToClick  = 
+//				System.out.println("addelementToClick: "+addelementToClick);
+//				Actions action = new Actions(driver);
+//				action.moveToElement(addelementToClick, -375  , -436).click().perform();
+//				Thread.sleep(2000);
+//				System.out.println("Now: "+action);
+//				//driver.findElement(By.xpath(AccesGrants.addtoRoleBtn)).click();
+//	     	   	System.out.println("Add to Role btn clicked");
+	     	   	
+	     	   driver.findElement(By.xpath(AccesGrants.addtoRoleBtn)).click();
+	     	   	
+			}
+			catch(Exception e){
+				
+				WebElement addelementToClick  = driver.findElement(By.xpath(AccesGrants.addtoRoleBtn));
+				System.out.println(e);
+				Point classname = addelementToClick.getLocation();
+		        int xcordi = classname.getX();
+		        xcordi =  xcordi-20;
+		        System.out.println("Element's Position from left side "+xcordi+" pixels.");
+		        
+		        int ycordi = classname.getY();
+		        ycordi = ycordi-20;
+		        System.out.println("Element's Position from top "+ycordi+" pixels.");
+		        
+		        //jse.executeScript("arguments[0].scrollIntoView();",elementToClick);
+				jse.executeScript("window.scrollBy("+xcordi+","+ycordi+")");
+				driver.findElement(By.xpath(AccesGrants.addtoRoleBtn)).click();
+				Thread.sleep(2000);
+			}
+			
+     	   
+			try
+			{
+//				jse.executeScript("scroll(document.body.scrollHeight,0)");
+	//			Thread.sleep(2000);
+	//			System.out.println("Now: Here");
+	//			WebElement makerelementToClick  = driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn));
+	//			Actions action1 = new Actions(driver);
+	//			action1.moveToElement(makerelementToClick).click().perform();
+				driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn)).click();
+				driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn)).sendKeys(Keys.TAB);
+				driver.findElement(By.xpath(AccesGrants.checkAllCheckerBtn)).click();
+				System.out.println("Checker All btn clicked");						
+				Thread.sleep(2000);
+				
+				System.out.println("Maker All btn clicked");
+			}
+			catch(Exception e){
+				
+				WebElement addelementToClick  = driver.findElement(By.xpath(AccesGrants.addtoRoleBtn));
+				System.out.println(e);
+				Point classname = addelementToClick.getLocation();
+		        int xcordi = classname.getX();
+		        xcordi =  xcordi-20;
+		        System.out.println("Element's Position from left side "+xcordi+" pixels.");
+		        
+		        int ycordi = classname.getY();
+		        ycordi = ycordi-20;
+		        System.out.println("Element's Position from top "+ycordi+" pixels.");
+		        
+		        //jse.executeScript("arguments[0].scrollIntoView();",elementToClick);
+				jse.executeScript("window.scrollBy("+xcordi+","+ycordi+")");
+				driver.findElement(By.xpath(AccesGrants.addtoRoleBtn)).click();
+				driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn)).sendKeys(Keys.TAB);
+				driver.findElement(By.xpath(AccesGrants.checkAllCheckerBtn)).click();
+				System.out.println("Checker All btn clicked");						
+				Thread.sleep(2000);
+			}	
 			Thread.sleep(2000);
 						
-		    driver.findElement(By.xpath(AccesGrants.checkAllMakerBtn)).sendKeys(Keys.TAB);
-			driver.findElement(By.xpath(AccesGrants.checkAllCheckerBtn)).click();
-			System.out.println("Checker All btn clicked");						
-			Thread.sleep(2000);
-			
-			
+		    
 			jse.executeScript("scroll(0, document.body.scrollHeight)"); 
 			
 			driver.findElement(By.xpath(AccesGrants.submitBtn)).click();
