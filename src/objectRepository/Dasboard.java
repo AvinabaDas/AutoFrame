@@ -80,11 +80,19 @@ public class Dasboard {
 	public static String userListmenu=".//*[@id='showUserList']";
 	public static String resetUnloclmenu=".//*[@id='user-management']/li[4]/a";
 	
-	
 	//Access management 
 	
 	public static String accessMgmt=".//*[@id='side-menu']/li[7]/a";
 	public static String accessGrants=".//*[@id='access-management']/li[1]/a";
 	public static String accessApproves=".//*[@id='access-management']/li[2]/a";
+	
+	public static String accessMgmtApprove=".//*[@id='side-menu']/li[6]/a";
+	
+	//Onboarding
+	public static String onboarding=".//*[@id='side-menu']/li[9]/a";
+	public static String onboardingOU=".//*[@id='others']/li[1]/a";
+	public static String onboardingParentBiller=".//*[@id='others']/li[2]/a";
+	
+	
 	
 }

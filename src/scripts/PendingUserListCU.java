@@ -148,27 +148,7 @@ public class PendingUserListCU extends Driver{
 				
 				pendingUserListMenu();
 				
-				
-//				driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).sendKeys(data[0]);
-//				System.out.println("Value selected for LoginId");
-//				driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).click();
-//				System.out.println("Value selected for searchbydropdnw");
-//				Thread.sleep(2000);
-//		
-//				driver.findElement(By.id(PendingUserList.btnAdd)).click();
-//				System.out.println("Add btn Clicked");
-//				Thread.sleep(2000);
-//
-//				driver.findElement(By.id(PendingUserList.srchUserNametxtbx)).sendKeys(data[1]);
-//				System.out.println("Value entered for login ID");
-//				driver.findElement(By.id(PendingUserList.srchUserNametxtbx)).click();
-//				System.out.println("Value selected for searchbydropdnw");
-//				Thread.sleep(2000);
-//			
-//				driver.findElement(By.xpath(PendingUserList.btnSearch)).click();
-//				System.out.println("Search btn clicked");						
-//				Thread.sleep(2000);
-				
+		
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(PendingUserList.radioBtnSelected)).click();
 				System.out.println("record Selected from the grid");						
