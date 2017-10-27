@@ -47,6 +47,8 @@ public class RegisterUser {
 	/*----------------------------------------------XPATH-------------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------*/
 	
+
+		
 	public static String createUser=".//*[@id='addUpdateUserDetail']/div[1]/div/h2";
 	
 	public static String empIdsucc=".//*[@id='tremp']/div";

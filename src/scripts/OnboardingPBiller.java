@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.util.Calendar;
 import commonFunctions.ExcelReport;
 import driver.Driver;
 import objectRepository.Dasboard;
@@ -101,11 +101,12 @@ public class OnboardingPBiller extends Driver{
 				for(int j =0; j < assertion.length ; j++){
 				if (sValue.equals(assertion[j])){
 					oSelect.selectByIndex(i);
+					break;
 				}
 				}
 				System.out.println(sValue);
 			
-				Thread.sleep(2000);
+				Thread.sleep(200);
 				
 				}
 			System.out.println("multipli state Selected");						
@@ -126,20 +127,45 @@ public class OnboardingPBiller extends Driver{
 			driver.findElement(By.xpath(OnboardingParentBiller.volPerDay)).sendKeys(data[9]);
 		    System.out.println("volPerDay entered");						
 			Thread.sleep(2000);
+			//Date Control Selection
 			
+			
+			 //Click on textbox so that datepicker will come
+			  		  
+			  driver.findElement(By.xpath(OnboardingParentBiller.effectiveFromDateicon)).click();
+	//		  driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			  //Click on next so that we will be in next month
+			  driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+			  
+			  /*DatePicker is a table.So navigate to each cell 
+			   * If a particular cell matches value 13 then select it
+			   */
+			  WebElement dateWidget = driver.findElement(By.id("ui-datepicker-div"));
+			  List rows=dateWidget.findElements(By.tagName("tr"));
+			  List columns=dateWidget.findElements(By.tagName("td"));
+			  int j;
+			  for (WebElement cell: columns){
+			   //Select 13th Date 
+			   if (cell.getText().assertion[j]){
+			   cell.findElement(By.linkText((assertion[j]))).click();
+			   break;
+			   }
+			  } 
+			 }
+		
 			/*Reg Address------*/
-			driver.findElement(By.xpath(OnboardingParentBiller.regAddressline)).sendKeys(data[10]);
+			driver.findElement(By.xpath(OnboardingParentBiller.regAddressline)).sendKeys(data[12]);
 		    System.out.println("regAddressline entered");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(OnboardingParentBiller.regState)).sendKeys(data[11]);
+			driver.findElement(By.xpath(OnboardingParentBiller.regState)).sendKeys(data[13]);
 		    System.out.println("regState entered");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(OnboardingParentBiller.regCity)).sendKeys(data[12]);
+			driver.findElement(By.xpath(OnboardingParentBiller.regCity)).sendKeys(data[14]);
 		    System.out.println("regCity entered");						
 			Thread.sleep(2000);
-			driver.findElement(By.xpath(OnboardingParentBiller.regPincode)).sendKeys(data[13]);
+			driver.findElement(By.xpath(OnboardingParentBiller.regPincode)).sendKeys(data[15]);
 			System.out.println("regPincode entered");	
 			Thread.sleep(2000);
 			driver.findElement(By.xpath(OnboardingParentBiller.regPincode)).sendKeys(Keys.TAB);
@@ -154,26 +180,26 @@ public class OnboardingPBiller extends Driver{
 			//*Comm Address------*/
 		
 			
-			driver.findElement(By.xpath(OnboardingParentBiller.commAddressline)).sendKeys(data[14]);
+			driver.findElement(By.xpath(OnboardingParentBiller.commAddressline)).sendKeys(data[16]);
 		    System.out.println("commAddressline entered");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(OnboardingParentBiller.commState)).sendKeys(data[15]);
+			driver.findElement(By.xpath(OnboardingParentBiller.commState)).sendKeys(data[17]);
 		    System.out.println("commState entered");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(OnboardingParentBiller.commCity)).sendKeys(data[16]);
+			driver.findElement(By.xpath(OnboardingParentBiller.commCity)).sendKeys(data[18]);
 		    System.out.println("commCity entered");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(OnboardingParentBiller.commPincode)).sendKeys(data[17]);
+			driver.findElement(By.xpath(OnboardingParentBiller.commPincode)).sendKeys(data[19]);
 			System.out.println("commPincode entered");	
 			Thread.sleep(2000);
 					
-		//	driver.findElement(By.xpath(OnboardingParentBiller.commPincode)).sendKeys(Keys.TAB);
-			//driver.findElement(By.xpath(OnboardingParentBiller.commState)).sendKeys(Keys.TAB);
-			//System.out.println("commState entered");
-			//Thread.sleep(2000);
+		    driver.findElement(By.xpath(OnboardingParentBiller.commPincode)).sendKeys(Keys.TAB);
+			driver.findElement(By.xpath(OnboardingParentBiller.commCountry)).sendKeys(Keys.TAB);
+			System.out.println("commState entered");
+			Thread.sleep(2000);
 			
 			
 			driver.findElement(By.xpath(OnboardingParentBiller.saveAsDraftbtn)).click();

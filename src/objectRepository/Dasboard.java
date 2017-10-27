@@ -72,6 +72,7 @@ public class Dasboard {
 	public static String logout=".//*[@id='rmenu']/div/div[1]/div/a/span";
 	
 	public static String userMgmt=".//*[@id='side-menu']/li[6]/a";
+	public static String userMgmt1=".//*[@id='side-menu']/li[5]/a";
 	
 	public static String OUuserMgmt=".//*[@id='side-menu']/li[2]/a";
 		

@@ -4,8 +4,11 @@ import java.awt.AWTException;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,7 +29,7 @@ public class PendingUserListCU extends Driver{
 				String titel=driver.getTitle();
 				System.out.println("tite"+titel);
 				Thread.sleep(2000);
-				driver.findElement(By.xpath(Dasboard.userMgmt)).click();
+				driver.findElement(By.xpath(Dasboard.userMgmt1)).click();
 				System.out.println("User Mgmt Clicked");
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(Dasboard.pendingUserListCU)).click();
@@ -78,34 +81,34 @@ public class PendingUserListCU extends Driver{
 			System.out.println("Search btn clicked");						
 			Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(PendingUserList.removebtnlogin)).click();
-			System.out.println("Remove btn Clicked");
-			Thread.sleep(2000);
+		//	driver.findElement(By.xpath(PendingUserList.removebtnlogin)).click();
+		//	System.out.println("Remove btn Clicked");
+	//		Thread.sleep(2000);
 //			
 			//* Search by Login Id end
 			
 			//* Search by OU Name  Start
 			
-			driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).sendKeys(data[2]);
-			System.out.println("Value Inputed for OU Name");
-			driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).click();
-			System.out.println("Value selected for searchbydropdnw");
-			Thread.sleep(2000);
-			driver.findElement(By.id(PendingUserList.btnAdd)).click();
-			System.out.println("Add btn Clicked");
-			Thread.sleep(2000);
+		//	driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).sendKeys(data[2]);
+		//	System.out.println("Value Inputed for OU Name");
+		//	driver.findElement(By.xpath(PendingUserList.searchBylistDropDown)).click();
+		//	System.out.println("Value selected for searchbydropdnw");
+	//		Thread.sleep(2000);
+		//	driver.findElement(By.id(PendingUserList.btnAdd)).click();
+		//	System.out.println("Add btn Clicked");
+		//	Thread.sleep(2000);
 			
-			driver.findElement(By.xpath(PendingUserList.ouSelected)).click();
-			System.out.println("OU Name Selected");
-			Thread.sleep(2000);
-			driver.findElement(By.xpath(PendingUserList.ouSelected)).sendKeys(data[3]);
-			System.out.println("Value Inputed for OU Name");
-			Thread.sleep(2000);
-			
-			driver.findElement(By.xpath(PendingUserList.btnSearch)).click();
-			System.out.println("Search btn clicked");						
-			Thread.sleep(2000);
-			
+//			driver.findElement(By.xpath(PendingUserList.ouSelected)).click();
+//			System.out.println("OU Name Selected");
+//			Thread.sleep(2000);
+//			driver.findElement(By.xpath(PendingUserList.ouSelected)).sendKeys(data[3]);
+//			System.out.println("Value Inputed for OU Name");
+//			Thread.sleep(2000);
+//			
+//			driver.findElement(By.xpath(PendingUserList.btnSearch)).click();
+//			System.out.println("Search btn clicked");						
+//			Thread.sleep(2000);
+//			
 			//* Search by OU name Id end
 		
 			//* For Approval-- selection from the grid start
@@ -113,10 +116,43 @@ public class PendingUserListCU extends Driver{
 			driver.findElement(By.xpath(PendingUserList.radioBtnSelected)).click();
 			System.out.println("record Selected from the grid");						
 			Thread.sleep(2000);
+			
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("scroll(0, document.body.scrollHeight)");
 			driver.findElement(By.xpath(PendingUserList.viewBtn)).click();
 			System.out.println("View btn clicked");						
 			Thread.sleep(2000);
+			//
+//			driver.findElement(By.xpath(PendingUserList.viewBtn)).click();
+//			System.out.println("View btn clicked");						
+//			Thread.sleep(2000);
 			
+//			WebElement elementToClick  = driver.findElement(By.xpath(PendingUserList.viewBtn));
+//			System.out.println("Checked: "+elementToClick );
+//			
+//			try
+//			{
+//				driver.findElement(By.xpath(PendingUserList.viewBtn)).click();
+//			}
+//			catch(Exception e)
+//			{
+//				Point classname = elementToClick.getLocation();
+//		        int xcordi = classname.getX();
+//		        xcordi =  xcordi-20;
+//		        System.out.println("Element's Position from left side "+xcordi+" pixels.");
+//		        
+//		        int ycordi = classname.getY();
+//		        ycordi = ycordi-20;
+//		        System.out.println("Element's Position from top "+ycordi+" pixels.");
+//		        
+//		        //jse.executeScript("arguments[0].scrollIntoView();",elementToClick);
+//		        JavascriptExecutor jse = (JavascriptExecutor)driver;
+//				jse.executeScript("window.scrollBy("+xcordi+","+ycordi+")");
+//				Thread.sleep(2000);
+//				driver.findElement(By.xpath(PendingUserList.viewBtn)).click();	
+//			}
+//			//
+			jse.executeScript("scroll(0, document.body.scrollHeight)");
 			driver.findElement(By.xpath(PendingUserList.approveBtn)).click();
 			System.out.println("Approve btn clicked");						
 			Thread.sleep(2000);
@@ -148,15 +184,22 @@ public class PendingUserListCU extends Driver{
 				
 				pendingUserListMenu();
 				
-		
+								
 				Thread.sleep(2000);
 				driver.findElement(By.xpath(PendingUserList.radioBtnSelected)).click();
 				System.out.println("record Selected from the grid");						
 				Thread.sleep(2000);
-				driver.findElement(By.xpath(PendingUserList.viewBtn)).click();
-				System.out.println("View btn clicked");						
-				Thread.sleep(2000);
+				//
+//				driver.findElement(By.xpath(PendingUserList.viewBtn)).click();
+//				System.out.println("View btn clicked");						
+//				Thread.sleep(2000);
+//				
+				//New
 				
+				
+				
+				
+				//
 				driver.findElement(By.xpath(PendingUserList.rejectBtn)).click();
 				System.out.println("Reject btn clicked");						
 				Thread.sleep(2000);
